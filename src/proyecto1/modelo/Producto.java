@@ -6,6 +6,14 @@ package proyecto1.modelo;
  */
 public class Producto
 {
+    public Producto(String descripcion, int precio, boolean disponible)
+    {
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.disponible = disponible;
+    }
+    
+    
     public double obtenerPrecio()
     {
         return precio;

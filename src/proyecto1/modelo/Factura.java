@@ -8,7 +8,15 @@ import java.util.List;
  */
 public class Factura
 {
+    public Factura(List<Producto> productos, Cliente cliente)
+    {
+        this.productos = productos;
+        this.cliente = cliente;
+    }
     
+    
+    
+    // en duda
     public void agregarProducto(Producto p)
     {
         throw new UnsupportedOperationException();
