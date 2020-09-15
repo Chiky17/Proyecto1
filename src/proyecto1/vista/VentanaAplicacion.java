@@ -5,18 +5,23 @@
  */
 package proyecto1.vista;
 
+import java.util.Observable;
+import java.util.Observer;
+import proyecto1.control.ControlAplicacion;
+
 /**
  *
  * @author USER
  */
-public class VentanaAplicacion extends javax.swing.JFrame
+public class VentanaAplicacion extends javax.swing.JFrame implements Observer
 {
 
     /**
      * Creates new form VentanaAplicacion
      */
-    public VentanaAplicacion()
+    public VentanaAplicacion(ControlAplicacion gestor)
     {
+        this.gestor = gestor;
         initComponents();
     }
 
@@ -31,200 +36,215 @@ public class VentanaAplicacion extends javax.swing.JFrame
     {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new javax.swing.JPanel();
+        panelEstado = new javax.swing.JPanel();
         etqEstado = new javax.swing.JLabel();
-        panelPrincipal = new javax.swing.JPanel();
+        panelPrincipal = new javax.swing.JTabbedPane();
+        panelEmpresa = new javax.swing.JPanel();
         etqNombre = new javax.swing.JLabel();
-        campoNombre = new javax.swing.JTextField();
-        etqID = new javax.swing.JLabel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(1, 3), new java.awt.Dimension(1, 3), new java.awt.Dimension(1, 3));
+        etqNomComercial = new javax.swing.JLabel();
         etqTipoId = new javax.swing.JLabel();
-        campoTipoId = new javax.swing.JTextField();
-        etqNumero = new javax.swing.JLabel();
-        campoNumeroId = new javax.swing.JTextField();
-        etqNombreComercial = new javax.swing.JLabel();
-        campoNombreComercial = new javax.swing.JTextField();
+        etqNumId = new javax.swing.JLabel();
         etqUbicacion = new javax.swing.JLabel();
-        campoUbicacion = new javax.swing.JTextField();
         etqTelefono = new javax.swing.JLabel();
-        campoTelefono = new javax.swing.JTextField();
         etqFax = new javax.swing.JLabel();
-        campoFax = new javax.swing.JTextField();
         etqCorreoElec = new javax.swing.JLabel();
-        campoCorreoElec = new javax.swing.JTextField();
-        btnListo = new javax.swing.JButton();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 2), new java.awt.Dimension(0, 2), new java.awt.Dimension(32767, 2));
-        jPanel2 = new javax.swing.JPanel();
-        etqTitulo = new javax.swing.JLabel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        btnEditar = new javax.swing.JButton();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(3, 2), new java.awt.Dimension(3, 2), new java.awt.Dimension(3, 2));
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        campoNombre = new javax.swing.JTextField();
+        campoNomComercial = new javax.swing.JTextField();
+        campoTipoId = new javax.swing.JTextField();
+        campoNumId = new javax.swing.JTextField();
+        campoUbicacion = new javax.swing.JTextField();
+        campoTelefono = new javax.swing.JTextField();
+        campoFax = new javax.swing.JTextField();
+        campoCorreo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(640, 300));
 
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        panelEstado.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        etqEstado.setText("No definido");
-        jPanel1.add(etqEstado);
+        etqEstado.setText("Por definir");
+        panelEstado.add(etqEstado);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(panelEstado, java.awt.BorderLayout.PAGE_END);
 
-        panelPrincipal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        panelPrincipal.setLayout(new java.awt.GridBagLayout());
+        panelEmpresa.setToolTipText("");
+        panelEmpresa.setLayout(new java.awt.GridBagLayout());
 
-        etqNombre.setText("Nombre");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(etqNombre, gridBagConstraints);
+        etqNombre.setText("Nombre:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(campoNombre, gridBagConstraints);
+        panelEmpresa.add(etqNombre, gridBagConstraints);
 
-        etqID.setText("Identificación");
+        etqNomComercial.setText("Nombre comercial");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        panelEmpresa.add(etqNomComercial, gridBagConstraints);
+
+        etqTipoId.setText("Tipo ID:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(etqID, gridBagConstraints);
+        panelEmpresa.add(etqTipoId, gridBagConstraints);
+
+        etqNumId.setText("Numero ID:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        panelEmpresa.add(etqNumId, gridBagConstraints);
+
+        etqUbicacion.setText("Ubicación:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        panelEmpresa.add(etqUbicacion, gridBagConstraints);
+
+        etqTelefono.setText("Teléfono:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        panelEmpresa.add(etqTelefono, gridBagConstraints);
+
+        etqFax.setText("Fax:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        panelEmpresa.add(etqFax, gridBagConstraints);
+
+        etqCorreoElec.setText("Correo Electronico:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        panelEmpresa.add(etqCorreoElec, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.2;
+        panelEmpresa.add(filler1, gridBagConstraints);
+
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                modificarEmpresa(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 9;
+        panelEmpresa.add(btnEditar, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        panelEmpresa.add(filler2, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weighty = 0.1;
+        panelEmpresa.add(filler3, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(filler1, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(filler2, gridBagConstraints);
+        panelEmpresa.add(filler4, gridBagConstraints);
 
-        etqTipoId.setText("Tipo");
+        campoNombre.setEditable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(etqTipoId, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(campoTipoId, gridBagConstraints);
+        panelEmpresa.add(campoNombre, gridBagConstraints);
 
-        etqNumero.setText("Número");
+        campoNomComercial.setEditable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(etqNumero, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(campoNumeroId, gridBagConstraints);
-
-        etqNombreComercial.setText("Nombre Comercial");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(etqNombreComercial, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(campoNombreComercial, gridBagConstraints);
+        panelEmpresa.add(campoNomComercial, gridBagConstraints);
 
-        etqUbicacion.setText("Ubicación");
+        campoTipoId.setEditable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.1;
+        panelEmpresa.add(campoTipoId, gridBagConstraints);
+
+        campoNumId.setEditable(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.1;
+        panelEmpresa.add(campoNumId, gridBagConstraints);
+
+        campoUbicacion.setEditable(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.1;
+        panelEmpresa.add(campoUbicacion, gridBagConstraints);
+
+        campoTelefono.setEditable(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(etqUbicacion, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(campoUbicacion, gridBagConstraints);
+        panelEmpresa.add(campoTelefono, gridBagConstraints);
 
-        etqTelefono.setText("Teléfono");
+        campoFax.setEditable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(etqTelefono, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(campoTelefono, gridBagConstraints);
+        panelEmpresa.add(campoFax, gridBagConstraints);
 
-        etqFax.setText("Fax");
+        campoCorreo.setEditable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(etqFax, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(campoFax, gridBagConstraints);
+        panelEmpresa.add(campoCorreo, gridBagConstraints);
 
-        etqCorreoElec.setText("Correo electronico");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(etqCorreoElec, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        panelPrincipal.add(campoCorreoElec, gridBagConstraints);
-
-        btnListo.setText("Listo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 10;
-        panelPrincipal.add(btnListo, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.weighty = 0.1;
-        panelPrincipal.add(filler3, gridBagConstraints);
+        panelPrincipal.addTab("Empresa", panelEmpresa);
 
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
 
-        etqTitulo.setText("Empresa");
-        jPanel2.add(etqTitulo);
-
-        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void modificarEmpresa(java.awt.event.ActionEvent evt)//GEN-FIRST:event_modificarEmpresa
+    {//GEN-HEADEREND:event_modificarEmpresa
+        btnEditar.setText("Listo");
+        editarCampos(true);
+    }//GEN-LAST:event_modificarEmpresa
 
     /**
      * @param args the command line arguments
@@ -260,45 +280,75 @@ public class VentanaAplicacion extends javax.swing.JFrame
             java.util.logging.Logger.getLogger(VentanaAplicacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run()
             {
-                new VentanaAplicacion().setVisible(true);
+                new VentanaAplicacion(new ControlAplicacion()).setVisible(true);
             }
 
         });
     }
 
+    public void editarCampos(boolean estado)
+    {
+        campoCorreo.setEditable(estado);
+        campoFax.setEditable(estado);
+        campoNomComercial.setEditable(estado);
+        campoNombre.setEditable(estado);
+        campoNumId.setEditable(estado);
+        campoTelefono.setEditable(estado);
+        campoTipoId.setEditable(estado);
+        campoUbicacion.setEditable(estado);
+
+    }
+
+    public void init()
+    {
+        gestor.registarObs(this);
+        setVisible(true);
+    }
+
+    @Override
+    public void update(Observable o, Object arg)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnListo;
-    private javax.swing.JTextField campoCorreoElec;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JTextField campoCorreo;
     private javax.swing.JTextField campoFax;
+    private javax.swing.JTextField campoNomComercial;
     private javax.swing.JTextField campoNombre;
-    private javax.swing.JTextField campoNombreComercial;
-    private javax.swing.JTextField campoNumeroId;
+    private javax.swing.JTextField campoNumId;
     private javax.swing.JTextField campoTelefono;
     private javax.swing.JTextField campoTipoId;
     private javax.swing.JTextField campoUbicacion;
     private javax.swing.JLabel etqCorreoElec;
     private javax.swing.JLabel etqEstado;
     private javax.swing.JLabel etqFax;
-    private javax.swing.JLabel etqID;
+    private javax.swing.JLabel etqNomComercial;
     private javax.swing.JLabel etqNombre;
-    private javax.swing.JLabel etqNombreComercial;
-    private javax.swing.JLabel etqNumero;
+    private javax.swing.JLabel etqNumId;
     private javax.swing.JLabel etqTelefono;
     private javax.swing.JLabel etqTipoId;
-    private javax.swing.JLabel etqTitulo;
     private javax.swing.JLabel etqUbicacion;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel panelPrincipal;
+    private javax.swing.Box.Filler filler4;
+    private javax.swing.JPanel panelEmpresa;
+    private javax.swing.JPanel panelEstado;
+    private javax.swing.JTabbedPane panelPrincipal;
     // End of variables declaration//GEN-END:variables
 
+    private ControlAplicacion gestor;
 }
