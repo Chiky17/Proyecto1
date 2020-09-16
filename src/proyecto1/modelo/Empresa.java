@@ -15,6 +15,7 @@ public class Empresa extends Observable
         productos = new ArrayList<>();
         clientes = new ArrayList<>();
         facturas = new ArrayList<>();
+        nombre = "Holi";
     }
 
     public void agregarCliente(Cliente c)
@@ -41,7 +42,21 @@ public class Empresa extends Observable
         notifyObservers();
     }
 
+    public String getNombre()
+    {
+        return nombre;
+    }
+    
+    public void setNombre(String nombre)
+    {
+        this.nombre = "Huuu";
+        
+        setChanged();
+        notifyObservers();
+    }
     private final List<Producto> productos;
     private final List<Cliente> clientes;
     private final List<Factura> facturas;
+    
+    private String nombre;
 }

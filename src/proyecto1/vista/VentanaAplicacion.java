@@ -8,6 +8,7 @@ package proyecto1.vista;
 import java.util.Observable;
 import java.util.Observer;
 import proyecto1.control.ControlAplicacion;
+import proyecto1.modelo.Empresa;
 
 /**
  *
@@ -61,6 +62,12 @@ public class VentanaAplicacion extends javax.swing.JFrame implements Observer
         campoTelefono = new javax.swing.JTextField();
         campoFax = new javax.swing.JTextField();
         campoCorreo = new javax.swing.JTextField();
+        btnListo = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        barraMenu = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        menuEditar = new javax.swing.JMenu();
+        itemEditarEmpresa = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,6 +154,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements Observer
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 9;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         panelEmpresa.add(btnEditar, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -166,7 +174,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements Observer
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weightx = 0.2;
         panelEmpresa.add(filler4, gridBagConstraints);
 
         campoNombre.setEditable(false);
@@ -233,18 +241,68 @@ public class VentanaAplicacion extends javax.swing.JFrame implements Observer
         gridBagConstraints.weightx = 0.1;
         panelEmpresa.add(campoCorreo, gridBagConstraints);
 
-        panelPrincipal.addTab("Empresa", panelEmpresa);
+        btnListo.setText("Listo");
+        btnListo.setEnabled(false);
+        btnListo.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                aplicaModificaEmpresa(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        panelEmpresa.add(btnListo, gridBagConstraints);
 
-        getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
+        panelPrincipal.addTab("Empresa", panelEmpresa);
+        panelPrincipal.addTab("tab2", jPanel1);
+
+        getContentPane().add(panelPrincipal, java.awt.BorderLayout.PAGE_START);
+
+        jMenu1.setText("File");
+        barraMenu.add(jMenu1);
+
+        menuEditar.setText("Editar");
+
+        itemEditarEmpresa.setText("Información Empresa");
+        itemEditarEmpresa.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                editarEmpresa(evt);
+            }
+        });
+        menuEditar.add(itemEditarEmpresa);
+
+        barraMenu.add(menuEditar);
+
+        setJMenuBar(barraMenu);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificarEmpresa(java.awt.event.ActionEvent evt)//GEN-FIRST:event_modificarEmpresa
     {//GEN-HEADEREND:event_modificarEmpresa
-        btnEditar.setText("Listo");
+
         editarCampos(true);
+        btnEditar.setEnabled(false);
+        btnListo.setEnabled(true);
     }//GEN-LAST:event_modificarEmpresa
+
+    private void aplicaModificaEmpresa(java.awt.event.ActionEvent evt)//GEN-FIRST:event_aplicaModificaEmpresa
+    {//GEN-HEADEREND:event_aplicaModificaEmpresa
+        editarCampos(false);
+        btnEditar.setEnabled(true);
+        btnListo.setEnabled(false);
+        gestor.setNombreModelo(campoNombre.getText());
+    }//GEN-LAST:event_aplicaModificaEmpresa
+
+    private void editarEmpresa(java.awt.event.ActionEvent evt)//GEN-FIRST:event_editarEmpresa
+    {//GEN-HEADEREND:event_editarEmpresa
+       new VentanaEmpresa(gestor).init();
+    }//GEN-LAST:event_editarEmpresa
 
     /**
      * @param args the command line arguments
@@ -317,13 +375,20 @@ public class VentanaAplicacion extends javax.swing.JFrame implements Observer
     @Override
     public void update(Observable o, Object arg)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        campoNombre.setText(actualizarNombre());
+    }
+
+    public String actualizarNombre()
+    {
+        return gestor.getModelo().getNombre();
     }
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnListo;
     private javax.swing.JTextField campoCorreo;
     private javax.swing.JTextField campoFax;
     private javax.swing.JTextField campoNomComercial;
@@ -345,6 +410,10 @@ public class VentanaAplicacion extends javax.swing.JFrame implements Observer
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
+    private javax.swing.JMenuItem itemEditarEmpresa;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu menuEditar;
     private javax.swing.JPanel panelEmpresa;
     private javax.swing.JPanel panelEstado;
     private javax.swing.JTabbedPane panelPrincipal;

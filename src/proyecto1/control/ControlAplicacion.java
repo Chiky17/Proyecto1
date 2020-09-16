@@ -46,5 +46,14 @@ public class ControlAplicacion
         modelo.addObserver(obs);
     }
 
+    public Empresa getModelo()
+    {
+        return modelo;
+    }
+    
+    public void setNombreModelo(String nombre)
+    {
+        modelo.setNombre(nombre);
+    }
     private Empresa modelo;
 }
