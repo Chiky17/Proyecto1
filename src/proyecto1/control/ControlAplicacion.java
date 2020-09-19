@@ -5,8 +5,8 @@
  */
 package proyecto1.control;
 
+import java.beans.PropertyChangeListener;
 import java.util.List;
-import java.util.Observer;
 import proyecto1.modelo.Cliente;
 import proyecto1.modelo.Empresa;
 import proyecto1.modelo.Factura;
@@ -30,9 +30,10 @@ public class ControlAplicacion
         modelo.agregarCliente(c);
     }
 
-    public void crearProducto()
+    public void crearProducto(String descripcion, double precio, int unidades)
     {
-        throw new UnsupportedOperationException();
+        Producto p = new Producto(descripcion, precio, unidades);
+        modelo.agregarProducto(p);
     }
 
     public void crearFactura(List<Producto> productos, Cliente c)
@@ -41,19 +42,25 @@ public class ControlAplicacion
         modelo.agregarFactura(f);
     }
 
-    public void registarObs(Observer obs)
-    {
-        modelo.addObserver(obs);
-    }
-
     public Empresa getModelo()
     {
         return modelo;
     }
     
-    public void setNombreModelo(String nombre)
+    public void setNombreEmpresa(String nombre)
     {
         modelo.setNombre(nombre);
     }
+    
+    public void eliminarObs(PropertyChangeListener obs)
+    {
+        modelo.eliminarObs(obs);
+    }
+    
+    public void registarObs(PropertyChangeListener obs)
+    {
+        modelo.añadirObs(obs);
+    }
+    
     private Empresa modelo;
 }
