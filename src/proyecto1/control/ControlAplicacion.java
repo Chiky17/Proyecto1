@@ -30,9 +30,9 @@ public class ControlAplicacion
         modelo.agregarCliente(c);
     }
 
-    public void crearProducto(String descripcion, double precio, int unidades)
+    public void crearProducto(String descripcion, double precio, int unidades, String codigo)
     {
-        Producto p = new Producto(descripcion, precio, unidades);
+        Producto p = new Producto(descripcion, precio, unidades, codigo);
         modelo.agregarProducto(p);
     }
 
@@ -46,21 +46,31 @@ public class ControlAplicacion
     {
         return modelo;
     }
-    
+
     public void setNombreEmpresa(String nombre)
     {
         modelo.setNombre(nombre);
     }
-    
+
     public void eliminarObs(PropertyChangeListener obs)
     {
         modelo.eliminarObs(obs);
     }
-    
+
     public void registarObs(PropertyChangeListener obs)
     {
         modelo.añadirObs(obs);
     }
-    
+
+    public Cliente buscaCliente(String id)
+    {
+        return modelo.buscaCliente(id);
+    }
+
+    public Producto buscaProducto(String codigo)
+    {
+        return modelo.buscaProducto(codigo);
+    }
+
     private final Empresa modelo;
 }
