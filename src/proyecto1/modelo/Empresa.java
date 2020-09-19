@@ -32,8 +32,8 @@ public class Empresa
 
     public void agregarCliente(Cliente c)
     {
+        soporte.firePropertyChange("clientes", null, c);
         clientes.add(c);
-        soporte.firePropertyChange("clientes", this.clientes, clientes);
     }
 
     public void agregarProducto(Producto p)
@@ -44,6 +44,7 @@ public class Empresa
 
     public void agregarFactura(Factura f)
     {
+        soporte.firePropertyChange("factura", null, f);
         facturas.add(f);
     }
 
@@ -56,7 +57,16 @@ public class Empresa
     {
         soporte.firePropertyChange("nombre", this.nombre, "hola");
     }
-
+    public Cliente buscaCliente(String id){
+        if(clientes.isEmpty()){
+            return null;
+        }
+        for(Cliente c: clientes){
+            if(c.getId().equals(id))
+                return c;
+        }
+        return null;
+    }
     private final List<Producto> productos;
     private final List<Cliente> clientes;
     private final List<Factura> facturas;

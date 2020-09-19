@@ -30,8 +30,7 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         panelEstado = new javax.swing.JPanel();
@@ -44,13 +43,18 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
         btnCrearCliente = new javax.swing.JButton();
         spinnerPrecio = new javax.swing.JSpinner();
         spinnerUnidadesProducto = new javax.swing.JSpinner();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Añadir Producto");
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowClosing(java.awt.event.WindowEvent evt)
-            {
+        setLocationByPlatform(true);
+        setMinimumSize(new java.awt.Dimension(251, 315));
+        setPreferredSize(new java.awt.Dimension(450, 350));
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
                 cerrar(evt);
             }
         });
@@ -63,41 +67,43 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
 
         panelPricipal.setLayout(new java.awt.GridBagLayout());
 
-        etqDescripcion.setText("Descripcion");
+        etqDescripcion.setText("Descripción");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(23, 12, 23, 12);
         panelPricipal.add(etqDescripcion, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        gridBagConstraints.insets = new java.awt.Insets(23, 12, 23, 12);
         panelPricipal.add(campoDescripcion, gridBagConstraints);
 
         etqPrecio.setText("Precio");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(23, 12, 23, 12);
         panelPricipal.add(etqPrecio, gridBagConstraints);
 
         etqUnidadesProducto.setText("Unidades");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.insets = new java.awt.Insets(23, 12, 23, 12);
         panelPricipal.add(etqUnidadesProducto, gridBagConstraints);
 
         btnCrearCliente.setText("Listo");
-        btnCrearCliente.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCrearCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearProducto(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         panelPricipal.add(btnCrearCliente, gridBagConstraints);
 
@@ -105,19 +111,40 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
         spinnerPrecio.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(3, 4, 3, 4);
+        gridBagConstraints.insets = new java.awt.Insets(22, 12, 22, 12);
         panelPricipal.add(spinnerPrecio, gridBagConstraints);
 
         spinnerUnidadesProducto.setModel(new javax.swing.SpinnerNumberModel(0, 0, 2147483647, 1));
         spinnerUnidadesProducto.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(3, 4, 3, 4);
+        gridBagConstraints.insets = new java.awt.Insets(22, 12, 22, 12);
         panelPricipal.add(spinnerUnidadesProducto, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 46;
+        panelPricipal.add(jSeparator1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 9;
+        gridBagConstraints.ipady = 44;
+        gridBagConstraints.weighty = 0.1;
+        panelPricipal.add(jSeparator2, gridBagConstraints);
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        jLabel1.setText("Ingrese lo solicitado");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        panelPricipal.add(jLabel1, gridBagConstraints);
 
         getContentPane().add(panelPricipal, java.awt.BorderLayout.CENTER);
 
@@ -198,11 +225,14 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
     private javax.swing.JLabel etqEstado;
     private javax.swing.JLabel etqPrecio;
     private javax.swing.JLabel etqUnidadesProducto;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel panelEstado;
     private javax.swing.JPanel panelPricipal;
     private javax.swing.JSpinner spinnerPrecio;
     private javax.swing.JSpinner spinnerUnidadesProducto;
     // End of variables declaration//GEN-END:variables
 
-    private ControlAplicacion gestor;
+    private final ControlAplicacion gestor;
 }

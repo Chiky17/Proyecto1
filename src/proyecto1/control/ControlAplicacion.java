@@ -62,5 +62,5 @@ public class ControlAplicacion
         modelo.añadirObs(obs);
     }
     
-    private Empresa modelo;
+    private final Empresa modelo;
 }
