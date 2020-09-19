@@ -39,9 +39,7 @@ public class Empresa
     public void agregarProducto(Producto p)
     {
         soporte.firePropertyChange("productos", null, p);
-        productos.add(p);
-        
-        
+        productos.add(p); 
     }
 
     public void agregarFactura(Factura f)
@@ -57,7 +55,6 @@ public class Empresa
     public void setNombre(String nombre)
     {
         soporte.firePropertyChange("nombre", this.nombre, "hola");
-        this.nombre = "hola";
     }
 
     private final List<Producto> productos;

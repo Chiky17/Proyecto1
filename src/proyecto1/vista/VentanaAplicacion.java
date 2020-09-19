@@ -294,11 +294,11 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelProducto.setLayout(panelProductoLayout);
         panelProductoLayout.setHorizontalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelProductoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAñadirProducto)
-                .addGap(270, 270, 270))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+            .addGroup(panelProductoLayout.createSequentialGroup()
+                .addGap(254, 254, 254)
+                .addComponent(btnAñadirProducto)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelProductoLayout.setVerticalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -414,53 +414,23 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
 
         if ("nombre".equals(cambio))
         {
-            System.out.println("nooo");
             campoNombre.setText((String) evt.getNewValue());
         }
 
         if ("productos".equals(cambio))
         {
-            System.out.println("sii");
             mostrarProducto((Producto) evt.getNewValue());
         }
     }
 
     public void mostrarProducto(Producto p)
-    { 
-        List<Producto> lista = new ArrayList<>();
-        lista.add(p);
-        String matris[][] = new String[lista.size()][3];
-
-        for (int i = 0; i < lista.size(); i++)
-        {
-            matris[i][0] = lista.get(i).getDescripcion();
-            matris[i][1] = Double.toString(lista.get(i).getPrecio());
-            matris[i][2] = Integer.toString(lista.get(i).getUnidades());
-        }
-
+    {
         DefaultTableModel tabla = (DefaultTableModel) tablaProductos.getModel();
-                String[] fila = {p.getDescripcion(), Double.toString(p.getPrecio()), Integer.toString(p.getUnidades())};
-                tabla.addRow(fila);
-        
-//        tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
-//            matris,
-//            new String []
-//            {
-//                "Descripción", "Precio", "Unidades"
-//            }
-//        )
-//        {
-//            boolean[] canEdit = new boolean []
-//            {
-//                false, false, false
-//            };
-//
-//            @Override
-//            public boolean isCellEditable(int rowIndex, int columnIndex)
-//            {
-//                return false;
-//            }
-//        });
+        String[] fila =
+        {
+            p.getDescripcion(), Double.toString(p.getPrecio()), Integer.toString(p.getUnidades())
+        };
+        tabla.addRow(fila);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
