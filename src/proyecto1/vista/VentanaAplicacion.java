@@ -577,7 +577,6 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
     {//GEN-HEADEREND:event_añadirProducto
         new VentanaProducto(gestor).init();
 
-
     }//GEN-LAST:event_añadirProducto
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
@@ -605,9 +604,10 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
                 String codigo, descripcion;
                 double precio;
                 int unidades;
-                           for (int i = 0; i < filsProductosF; i++)
+                for (int i = 0; i < filsProductosF; i++)
                 {
                     codigoAux = (String) modeloProductosFactura.getValueAt(i, 0);
+                    unidades = Integer.parseInt((String) modeloProductos.getValueAt(i, 2));
 
                     for (int j = 0; j < filsProductos; j++)
                     {
@@ -616,8 +616,8 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
                         {
                             descripcion = (String) modeloProductos.getValueAt(i, 1);
                             precio = Double.parseDouble((String) modeloProductos.getValueAt(i, 2));
-                            unidades = Integer.parseInt((String) modeloProductos.getValueAt(i, 3));
                             Producto p = new Producto(descripcion, precio, unidades, codigo);
+
                             productos.add(p);
                         }
                     }
@@ -663,6 +663,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         int cantP = (int) textFactCanPro.getValue();
         if (p != null)
         {
+            //if()
             while (p.getUnidades() - cantP < 0)
             {
                 cantP--;
@@ -677,7 +678,8 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
                     cantP--;
                 }
                 p.setUnidades(p.getUnidades() - cantP);
-                mostarProductoFactura(p);
+                mostarProductoFactura(p, cantP);
+                actualizarProducto(p);
                 return p;
             } else
             {
@@ -775,6 +777,27 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         tabla.addRow(fila);
     }
 
+    public void actualizarProducto(Producto p)
+    {
+        TableModel modeloProductos = tablaProductos.getModel();
+        int filsProductos = modeloProductos.getRowCount();
+
+        String codigo = p.getCodigo();
+        String codigoAux;
+
+        for (int i = 0; i < filsProductos; i++)
+        {
+            codigoAux = (String) modeloProductos.getValueAt(i, 0);
+
+            if (codigo.equals(codigoAux));
+            {
+                modeloProductos.setValueAt(p.getUnidades(), i, 3);
+            }
+
+        }
+    }
+
+
     public void mostrarCliente(Cliente c)
     {
         DefaultTableModel tabla = (DefaultTableModel) tablaCliente.getModel();
@@ -786,13 +809,13 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         tabla.addRow(fila);
     }
 
-    public void mostarProductoFactura(Producto p)
+    public void mostarProductoFactura(Producto p, int cant)
     {
         DefaultTableModel tabla = (DefaultTableModel) tablaFactProd.getModel();
         String[] fila
                 =
                 {
-                    p.getCodigo(), p.getDescripcion(), Integer.toString(p.getUnidades())
+                    p.getCodigo(), p.getDescripcion(), Integer.toString(cant)
                 };
         tabla.addRow(fila);
     }
