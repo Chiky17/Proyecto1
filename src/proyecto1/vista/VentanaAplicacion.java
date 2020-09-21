@@ -31,8 +31,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         panelEstado = new javax.swing.JPanel();
@@ -105,55 +104,56 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         panelEmpresa.add(etqNombre, gridBagConstraints);
 
         etqNomComercial.setText("Nombre comercial");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         panelEmpresa.add(etqNomComercial, gridBagConstraints);
 
         etqTipoId.setText("Tipo ID:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         panelEmpresa.add(etqTipoId, gridBagConstraints);
 
         etqNumId.setText("Numero ID:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         panelEmpresa.add(etqNumId, gridBagConstraints);
 
         etqUbicacion.setText("Ubicación:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         panelEmpresa.add(etqUbicacion, gridBagConstraints);
 
         etqTelefono.setText("Teléfono:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         panelEmpresa.add(etqTelefono, gridBagConstraints);
 
         etqFax.setText("Fax:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         panelEmpresa.add(etqFax, gridBagConstraints);
 
         etqCorreoElec.setText("Correo Electronico:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         panelEmpresa.add(etqCorreoElec, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -164,17 +164,15 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelEmpresa.add(filler1, gridBagConstraints);
 
         btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 permitirModificarEmpresa(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         panelEmpresa.add(btnEditar, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -183,12 +181,14 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         panelEmpresa.add(filler2, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         panelEmpresa.add(filler3, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -203,6 +203,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         panelEmpresa.add(campoNombre, gridBagConstraints);
 
         campoNomComercial.setEditable(false);
@@ -211,6 +212,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         panelEmpresa.add(campoNomComercial, gridBagConstraints);
 
         campoTipoId.setEditable(false);
@@ -219,6 +221,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         panelEmpresa.add(campoTipoId, gridBagConstraints);
 
         campoNumId.setEditable(false);
@@ -227,6 +230,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         panelEmpresa.add(campoNumId, gridBagConstraints);
 
         campoUbicacion.setEditable(false);
@@ -235,6 +239,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         panelEmpresa.add(campoUbicacion, gridBagConstraints);
 
         campoTelefono.setEditable(false);
@@ -243,6 +248,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         panelEmpresa.add(campoTelefono, gridBagConstraints);
 
         campoFax.setEditable(false);
@@ -251,6 +257,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         panelEmpresa.add(campoFax, gridBagConstraints);
 
         campoCorreo.setEditable(false);
@@ -259,21 +266,20 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         gridBagConstraints.gridy = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
         panelEmpresa.add(campoCorreo, gridBagConstraints);
 
         btnListo.setText("Listo");
         btnListo.setEnabled(false);
-        btnListo.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnListo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aplicaModificaEmpresa(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(9, 9, 9, 9);
         panelEmpresa.add(btnListo, gridBagConstraints);
 
         panelPrincipal.addTab("Empresa", panelEmpresa);
@@ -281,32 +287,25 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelProducto.setToolTipText("");
 
         btnAñadirProducto.setText("Añadir");
-        btnAñadirProducto.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAñadirProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 añadirProducto(evt);
             }
         });
 
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
 
             },
-            new String []
-            {
+            new String [] {
                 "Código", "Descripción", "Precio", "Unidades"
             }
-        )
-        {
-            boolean[] canEdit = new boolean []
-            {
+        ) {
+            boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
@@ -335,32 +334,25 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelProducto.getAccessibleContext().setAccessibleName("");
 
         btnCliente.setText("Añadir");
-        btnCliente.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClienteActionPerformed(evt);
             }
         });
 
         tablaCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
 
             },
-            new String []
-            {
+            new String [] {
                 "Nombre", "Cédula", "Correo"
             }
-        )
-        {
-            boolean[] canEdit = new boolean []
-            {
+        ) {
+            boolean[] canEdit = new boolean [] {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
@@ -388,20 +380,15 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelPrincipal.addTab("Cliente", panelCliente);
 
         btnSeleClien.setText("Comprobar");
-        btnSeleClien.setActionCommand("Comprobar");
-        btnSeleClien.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnSeleClien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeleClienActionPerformed(evt);
             }
         });
 
         btnSeleProd.setText("Agregar");
-        btnSeleProd.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnSeleProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeleProdActionPerformed(evt);
             }
         });
@@ -412,39 +399,31 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
 
         textFactCanPro.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
-        textFactClient.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        textFactClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFactClientActionPerformed(evt);
             }
         });
 
         tablaFactProd.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
 
             },
-            new String []
-            {
+            new String [] {
                 "Codigo", "Producto / Servicio", "Cantidad "
             }
         ));
         jScrollPane3.setViewportView(tablaFactProd);
 
         btnCrearFactura.setText("Crear");
-        btnCrearFactura.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCrearFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearFactura(evt);
             }
         });
 
-        textFactProd.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        textFactProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFactProdActionPerformed(evt);
             }
         });
