@@ -621,10 +621,9 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
                     lineasDetalle.add(ln);
                 }
             }
-
             gestor.crearFactura(lineasDetalle, c);
             mostarMensaje("Factura creada");
-            System.out.println(new Factura(lineasDetalle, c));
+
         } else
         {
             mostrarError("Cliente no encontrado (crear cliente)");

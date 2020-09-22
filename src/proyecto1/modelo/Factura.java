@@ -14,7 +14,7 @@ public class Factura
     {
         this.lineas = lineas;
         this.cliente = cliente;
-        this.codigo = new Random().nextInt((200 - 1) + 1);
+        this.codigo = k++;
     }
 
     public double total()
@@ -37,5 +37,6 @@ public class Factura
     
     private final List<LineaDetalle> lineas;
     private final Cliente cliente;
+    private static int k = 1;
     private final int codigo;
 }
