@@ -57,7 +57,7 @@ public class Empresa implements Serializable
 
     public void agregarFactura(Factura f)
     {
-        soporte.firePropertyChange("factura", null, f);
+        soporte.firePropertyChange("facturas", null, f);
         facturas.add(f);
     }
 
@@ -68,7 +68,8 @@ public class Empresa implements Serializable
 
     public void setNombre(String nombre)
     {
-        soporte.firePropertyChange("nombre", this.nombre, "hola");
+        soporte.firePropertyChange("nombre", this.nombre, nombre);
+        this.nombre = nombre;
     }
 
     public Cliente buscaCliente(String id)
@@ -98,6 +99,22 @@ public class Empresa implements Serializable
             if (p.getCodigo().equals(codigo))
             {
                 return p;
+            }
+        }
+        return null;
+    }
+    
+     public Factura buscaFacura(int codigo)
+    {
+        if (facturas.isEmpty())
+        {
+            return null;
+        }
+        for (Factura f : facturas)
+        {
+            if (f.getCodigo() == codigo)
+            {
+                return f;
             }
         }
         return null;

@@ -74,15 +74,22 @@ public class ControlAplicacion
         return modelo.buscaProducto(codigo);
     }
 
+    public Factura buscaFactura(int codigo)
+    {
+        return modelo.buscaFacura(codigo);
+    }
+
     //XML
-    public void guardarModelo(String salida){
+    public void guardarModelo(String salida)
+    {
         modelo.guardarEmpresa(salida);
     }
-    
-    public void recuperarModelo(String entrada) throws FileNotFoundException{
+
+    public void recuperarModelo(String entrada) throws FileNotFoundException
+    {
         modelo.cargarEmpresa(entrada);
     }
-    
-    
+
+
     private final Empresa modelo;
 }

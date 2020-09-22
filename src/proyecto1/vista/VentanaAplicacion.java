@@ -10,6 +10,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import proyecto1.control.ControlAplicacion;
@@ -71,7 +72,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         btnCliente = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaCliente = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        panelFactura = new javax.swing.JPanel();
         btnSeleClien = new javax.swing.JButton();
         btnSeleProd = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -85,6 +86,15 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         jLabel3 = new javax.swing.JLabel();
         etqFactClien = new javax.swing.JLabel();
         etqFactProd = new javax.swing.JLabel();
+        panelListaFacturas = new javax.swing.JPanel();
+        etqFactura = new javax.swing.JLabel();
+        comboFacturas = new javax.swing.JComboBox<>();
+        etqCodFactura = new javax.swing.JLabel();
+        etqId = new javax.swing.JLabel();
+        etqCliente1 = new javax.swing.JLabel();
+        etqId1 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaMostarFactura = new javax.swing.JTable();
         barraMenu = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -329,7 +339,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelProducto.setLayout(panelProductoLayout);
         panelProductoLayout.setHorizontalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
             .addGroup(panelProductoLayout.createSequentialGroup()
                 .addGap(254, 254, 254)
                 .addComponent(btnAñadirProducto)
@@ -338,7 +348,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelProductoLayout.setVerticalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProductoLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAñadirProducto)
                 .addContainerGap())
@@ -383,7 +393,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelCliente.setLayout(panelClienteLayout);
         panelClienteLayout.setHorizontalGroup(
             panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
             .addGroup(panelClienteLayout.createSequentialGroup()
                 .addGap(256, 256, 256)
                 .addComponent(btnCliente)
@@ -392,7 +402,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelClienteLayout.setVerticalGroup(
             panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelClienteLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCliente)
                 .addGap(12, 12, 12))
@@ -467,51 +477,51 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
 
         etqFactProd.setText("...");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelFacturaLayout = new javax.swing.GroupLayout(panelFactura);
+        panelFactura.setLayout(panelFacturaLayout);
+        panelFacturaLayout.setHorizontalGroup(
+            panelFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
+            .addGroup(panelFacturaLayout.createSequentialGroup()
+                .addGroup(panelFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFacturaLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3))
                         .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(textFactClient)
                             .addComponent(textFactProd)
                             .addComponent(textFactCanPro, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                             .addComponent(etqFactClien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(etqFactProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSeleProd)
                             .addComponent(btnSeleClien, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelFacturaLayout.createSequentialGroup()
                         .addGap(250, 250, 250)
                         .addComponent(btnCrearFactura)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelFacturaLayout.setVerticalGroup(
+            panelFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFacturaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFactClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSeleClien))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etqFactClien)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textFactProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(panelFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textFactCanPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(btnSeleProd))
@@ -524,7 +534,100 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
                 .addContainerGap())
         );
 
-        panelPrincipal.addTab("Factura", jPanel1);
+        panelPrincipal.addTab("Factura", panelFactura);
+
+        etqFactura.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        etqFactura.setText("Facturas por codigo");
+
+        comboFacturas.setModel(modeloCombo);
+        comboFacturas.setToolTipText("");
+        comboFacturas.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mostarFactura(evt);
+            }
+        });
+
+        etqCodFactura.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        etqCodFactura.setText("Factura número: ");
+
+        etqId.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        etqId.setText("Cédula:");
+
+        etqCliente1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        etqCliente1.setText("Cliente:");
+
+        etqId1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        etqId1.setText("Productos");
+
+        tablaMostarFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tablaMostarFactura.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        tablaMostarFactura.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
+
+            },
+            new String []
+            {
+                "Código", "Descripción", "Cantidad", "Precio", "TOTAL"
+            }
+        ));
+        tablaMostarFactura.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane4.setViewportView(tablaMostarFactura);
+
+        javax.swing.GroupLayout panelListaFacturasLayout = new javax.swing.GroupLayout(panelListaFacturas);
+        panelListaFacturas.setLayout(panelListaFacturasLayout);
+        panelListaFacturasLayout.setHorizontalGroup(
+            panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelListaFacturasLayout.createSequentialGroup()
+                .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelListaFacturasLayout.createSequentialGroup()
+                        .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelListaFacturasLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(etqCodFactura))
+                            .addGroup(panelListaFacturasLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(etqCliente1))
+                            .addGroup(panelListaFacturasLayout.createSequentialGroup()
+                                .addGap(197, 197, 197)
+                                .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comboFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(etqFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panelListaFacturasLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(etqId))
+                            .addGroup(panelListaFacturasLayout.createSequentialGroup()
+                                .addGap(230, 230, 230)
+                                .addComponent(etqId1)))
+                        .addGap(0, 263, Short.MAX_VALUE))
+                    .addGroup(panelListaFacturasLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane4)))
+                .addContainerGap())
+        );
+        panelListaFacturasLayout.setVerticalGroup(
+            panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelListaFacturasLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(etqFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(etqCodFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(etqCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(etqId, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(etqId1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelPrincipal.addTab("Lista de facturas", panelListaFacturas);
 
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
 
@@ -623,13 +726,12 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
             }
             gestor.crearFactura(lineasDetalle, c);
             mostarMensaje("Factura creada");
+            eliminarTablaProductosFactura();
 
         } else
         {
             mostrarError("Cliente no encontrado (crear cliente)");
         }
-
-
     }//GEN-LAST:event_crearFactura
 
     private void textFactProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFactProdActionPerformed
@@ -662,23 +764,23 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
 
         if (cantP > 0)
         {
-            if (p.getUnidades() - cantP >= 0)
+            if (p != null)
             {
-                if (p != null)
+                if (p.getUnidades() - cantP >= 0)
                 {
+
                     p.setUnidades(p.getUnidades() - cantP);
                     mostarProductoFactura(p, cantP);
                     actualizaTablaProductos();
-
                 } else
                 {
                     etqFactProd.setForeground(Color.red);
-                    etqFactProd.setText("Producto no encontrado (crear producto)");
+                    etqFactProd.setText("No hay unidades suficientes del producto");
                 }
             } else
             {
                 etqFactProd.setForeground(Color.red);
-                etqFactProd.setText("No hay unidades suficientes del producto");
+                etqFactProd.setText("Producto no encontrado (crear producto)");
             }
         } else
         {
@@ -686,6 +788,14 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
             etqFactProd.setText("La cantidad del producto debe ser mayor a 0");
         }
     }//GEN-LAST:event_agregarProducto
+
+    private void mostarFactura(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mostarFactura
+    {//GEN-HEADEREND:event_mostarFactura
+        eliminarTablaFactura();
+        Factura f = (Factura) comboFacturas.getSelectedItem();
+
+        mostrarFacturas(f.getLineas());
+    }//GEN-LAST:event_mostarFactura
 
     public void editarCampos(boolean estado)
     {
@@ -749,6 +859,12 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         {
             mostrarCliente((Cliente) evt.getNewValue());
         }
+
+        if ("facturas".equals(cambio))
+        {
+            Factura f = (Factura) evt.getNewValue();
+            modeloCombo.addElement(f);
+        }
     }
 
     public void mostrarProducto(Producto p)
@@ -788,6 +904,20 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         }
     }
 
+    public void eliminarTablaProductosFactura()
+    {
+        DefaultTableModel tabla = (DefaultTableModel) tablaFactProd.getModel();
+
+        tabla.setRowCount(0);
+    }
+    
+    public void eliminarTablaFactura()
+    {
+        DefaultTableModel tabla = (DefaultTableModel) tablaMostarFactura.getModel();
+
+        tabla.setRowCount(0);
+    }
+
     public void mostrarCliente(Cliente c)
     {
         DefaultTableModel tabla = (DefaultTableModel) tablaCliente.getModel();
@@ -809,6 +939,39 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
                 };
         tabla.addRow(fila);
     }
+
+    public void mostrarFacturas(List<LineaDetalle> lineas)
+    {
+        DefaultTableModel tabla = (DefaultTableModel) tablaMostarFactura.getModel();
+        Producto p;
+        int cant;
+        double precio;
+        double suma = 0;
+
+        if (!lineas.isEmpty())
+        {
+            for (int i = 0; i < lineas.size(); i++)
+            {
+                p = lineas.get(i).getProducto();
+                cant = lineas.get(i).getCantidad();
+                precio = p.getPrecio() * cant;
+                suma += precio;
+
+                String[] fila
+                        =
+                        {
+                            p.getCodigo(), p.getDescripcion(), Integer.toString(cant), Double.toString(p.getPrecio()), " "
+                        };
+                tabla.addRow(fila);
+            }
+            String[] fila
+                    =
+                    {
+                        " ", " ", " ", " ", Double.toString(suma)
+                    };
+            tabla.addRow(fila);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton btnAñadirProducto;
@@ -826,11 +989,17 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
     private javax.swing.JTextField campoTelefono;
     private javax.swing.JTextField campoTipoId;
     private javax.swing.JTextField campoUbicacion;
+    private javax.swing.JComboBox<String> comboFacturas;
+    private javax.swing.JLabel etqCliente1;
+    private javax.swing.JLabel etqCodFactura;
     private javax.swing.JLabel etqCorreoElec;
     private javax.swing.JLabel etqEstado;
     private javax.swing.JLabel etqFactClien;
     private javax.swing.JLabel etqFactProd;
+    private javax.swing.JLabel etqFactura;
     private javax.swing.JLabel etqFax;
+    private javax.swing.JLabel etqId;
+    private javax.swing.JLabel etqId1;
     private javax.swing.JLabel etqNomComercial;
     private javax.swing.JLabel etqNombre;
     private javax.swing.JLabel etqNumId;
@@ -846,17 +1015,20 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPanel panelCliente;
     private javax.swing.JPanel panelEmpresa;
     private javax.swing.JPanel panelEstado;
+    private javax.swing.JPanel panelFactura;
+    private javax.swing.JPanel panelListaFacturas;
     private javax.swing.JTabbedPane panelPrincipal;
     private javax.swing.JPanel panelProducto;
     private javax.swing.JTable tablaCliente;
     private javax.swing.JTable tablaFactProd;
+    private javax.swing.JTable tablaMostarFactura;
     private javax.swing.JTable tablaProductos;
     private javax.swing.JSpinner textFactCanPro;
     private javax.swing.JTextField textFactClient;
@@ -864,5 +1036,6 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
     // End of variables declaration//GEN-END:variables
 
     private final ControlAplicacion gestor;
+    private DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
 
 }

@@ -10,7 +10,10 @@ import javax.xml.bind.annotation.XmlType;
  * @author USER
  */
 
-@XmlType(name = "factura", propOrder = {"lineas", "cliente"})
+@XmlType(name = "factura", propOrder =
+{
+    "lineas", "cliente"
+})
 public class Factura implements Serializable
 {
     public Factura(List<LineaDetalle> lineas, Cliente cliente)
@@ -32,20 +35,31 @@ public class Factura implements Serializable
         return suma;
     }
 
-     @Override
+    @Override
     public String toString()
     {
-        return String.format("%d%n", codigo);
+        return String.format("Código: %d", codigo);
     }
-    
+
     @XmlElement(name = "cliente")
-    public void setCliente(Cliente cliente){
+    public void setCliente(Cliente cliente)
+    {
         this.cliente = cliente;
     }
-    
+
+    public int getCodigo()
+    {
+        return codigo;
+    }
+
+    public List<LineaDetalle> getLineas()
+    {
+        return lineas;
+    }
+
     @XmlElement(name = "lineas")
     private final List<LineaDetalle> lineas;
-    private  Cliente cliente;
+    private Cliente cliente;
     private static int k = 1;
     private final int codigo;
 }
