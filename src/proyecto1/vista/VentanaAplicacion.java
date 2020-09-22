@@ -776,6 +776,25 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         }
     }
 
+    public void actualizaTablaProductos() {
+        List<Producto> list= gestor.getModelo().getProductos();
+        if (list != null) {
+            eliminarTablaProductos();
+            if (!list.isEmpty()) {
+                for (Producto p : list) {
+                    mostrarProducto(p);
+                }
+            }
+        }
+    }
+
+    public void eliminarTablaProductos() {
+        DefaultTableModel tabla = (DefaultTableModel) tablaProductos.getModel();
+        int fila = tablaProductos.getRowCount();
+        for (int i = fila - 1; i >= 0; i--) {
+            tabla.removeRow(i);
+        }
+    }
 
     public void mostrarCliente(Cliente c)
     {
