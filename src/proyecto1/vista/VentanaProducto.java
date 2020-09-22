@@ -31,8 +31,7 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         panelEstado = new javax.swing.JPanel();
@@ -57,10 +56,8 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
         setMinimumSize(new java.awt.Dimension(300, 400));
         setPreferredSize(new java.awt.Dimension(450, 350));
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowClosing(java.awt.event.WindowEvent evt)
-            {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
                 cerrar(evt);
             }
         });
@@ -103,10 +100,8 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
         panelPricipal.add(etqUnidadesProducto, gridBagConstraints);
 
         btnCrearCliente.setText("Listo");
-        btnCrearCliente.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCrearCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearProducto(evt);
             }
         });
@@ -181,10 +176,15 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
         int unidades = (int) spinnerUnidadesProducto.getValue();
         double precio = (Double) spinnerPrecio.getValue();
 
-        if (compruebaDescripcion(descripcion) && compruebaPrecio(precio) && compruebaUnidades(unidades) && compruebaCodigo(codigo))
+         if (compruebaDescripcion(descripcion) && compruebaPrecio(precio) && compruebaUnidades(unidades) && compruebaCodigo(codigo))
         {
+            if(compruebaExistencia(codigo)){
+                mostrarError(" Error, producto existente...");
+            }
+            else{
             gestor.crearProducto(descripcion, precio, unidades, codigo);
             dispose();
+            }
         }
     }//GEN-LAST:event_crearProducto
 
@@ -194,6 +194,10 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
         dispose();
     }//GEN-LAST:event_cerrar
 
+     private boolean compruebaExistencia(String id){
+        return gestor.buscaProducto(id) != null;
+    }
+     
     private boolean compruebaDescripcion(String descripcion)
     {
         if (descripcion.isEmpty())

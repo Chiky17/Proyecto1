@@ -196,8 +196,13 @@ public class VentanaCliente extends javax.swing.JFrame implements PropertyChange
         String cor = jTextCorreo.getText();
 
         if (compruebaDescripcion(nom) && compruebaDescripcion(ced) && compruebaDescripcion(cor)) {
+            if(compruebaExistencia(ced)){
+                mostrarError("Error, cliente ya existente...");
+            }
+            else{
             gestor.crearCliente(nom, ced, cor);
             dispose();
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -206,6 +211,11 @@ public class VentanaCliente extends javax.swing.JFrame implements PropertyChange
         setVisible(true);
     }
 
+     private boolean compruebaExistencia(String id){
+        return gestor.buscaCliente(id) != null;
+    }
+    
+     
     private boolean compruebaDescripcion(String descripcion) {
         if (descripcion.isEmpty()) {
             mostrarError("\u26A0 Debe rellenar la descripción");
