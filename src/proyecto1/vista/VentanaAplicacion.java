@@ -31,7 +31,8 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
         java.awt.GridBagConstraints gridBagConstraints;
 
         panelEstado = new javax.swing.JPanel();
@@ -164,8 +165,10 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelEmpresa.add(filler1, gridBagConstraints);
 
         btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnEditar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 permitirModificarEmpresa(evt);
             }
         });
@@ -271,8 +274,10 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
 
         btnListo.setText("Listo");
         btnListo.setEnabled(false);
-        btnListo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnListo.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 aplicaModificaEmpresa(evt);
             }
         });
@@ -287,25 +292,32 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelProducto.setToolTipText("");
 
         btnAñadirProducto.setText("Añadir");
-        btnAñadirProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAñadirProducto.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 añadirProducto(evt);
             }
         });
 
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
                 "Código", "Descripción", "Precio", "Unidades"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
@@ -334,25 +346,32 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelProducto.getAccessibleContext().setAccessibleName("");
 
         btnCliente.setText("Añadir");
-        btnCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCliente.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnClienteActionPerformed(evt);
             }
         });
 
         tablaCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
                 "Nombre", "Cédula", "Correo"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
@@ -380,15 +399,19 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelPrincipal.addTab("Cliente", panelCliente);
 
         btnSeleClien.setText("Comprobar");
-        btnSeleClien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSeleClien.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnSeleClienActionPerformed(evt);
             }
         });
 
         btnSeleProd.setText("Agregar");
-        btnSeleProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSeleProd.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnSeleProdActionPerformed(evt);
             }
         });
@@ -399,31 +422,39 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
 
         textFactCanPro.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
-        textFactClient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        textFactClient.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 textFactClientActionPerformed(evt);
             }
         });
 
         tablaFactProd.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
                 "Codigo", "Producto / Servicio", "Cantidad "
             }
         ));
         jScrollPane3.setViewportView(tablaFactProd);
 
         btnCrearFactura.setText("Crear");
-        btnCrearFactura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCrearFactura.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 crearFactura(evt);
             }
         });
 
-        textFactProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        textFactProd.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 textFactProdActionPerformed(evt);
             }
         });
@@ -583,10 +614,11 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
                 String codigo, descripcion;
                 double precio;
                 int unidades;
+
                 for (int i = 0; i < filsProductosF; i++)
                 {
                     codigoAux = (String) modeloProductosFactura.getValueAt(i, 0);
-                    unidades = Integer.parseInt((String) modeloProductos.getValueAt(i, 2));
+                    unidades = Integer.parseInt((String) modeloProductos.getValueAt(i, 3));
 
                     for (int j = 0; j < filsProductos; j++)
                     {
@@ -657,8 +689,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
                     cantP--;
                 }
                 p.setUnidades(p.getUnidades() - cantP);
-                mostarProductoFactura(p, cantP);
-                actualizarProducto(p);
+                mostarProductoFactura(p, cantP);    
                 return p;
             } else
             {
@@ -776,22 +807,28 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         }
     }
 
-    public void actualizaTablaProductos() {
-        List<Producto> list= gestor.getModelo().getProductos();
-        if (list != null) {
+    public void actualizaTablaProductos()
+    {
+        List<Producto> list = gestor.getModelo().getProductos();
+        if (list != null)
+        {
             eliminarTablaProductos();
-            if (!list.isEmpty()) {
-                for (Producto p : list) {
+            if (!list.isEmpty())
+            {
+                for (Producto p : list)
+                {
                     mostrarProducto(p);
                 }
             }
         }
     }
 
-    public void eliminarTablaProductos() {
+    public void eliminarTablaProductos()
+    {
         DefaultTableModel tabla = (DefaultTableModel) tablaProductos.getModel();
         int fila = tablaProductos.getRowCount();
-        for (int i = fila - 1; i >= 0; i--) {
+        for (int i = fila - 1; i >= 0; i--)
+        {
             tabla.removeRow(i);
         }
     }
