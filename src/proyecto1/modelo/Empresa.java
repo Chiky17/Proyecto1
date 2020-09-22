@@ -2,14 +2,27 @@ package proyecto1.modelo;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author USER
  */
-public class Empresa
+
+@XmlRootElement(name = "Empresa")
+public class Empresa implements Serializable
 {
     public Empresa()
     {
@@ -94,8 +107,71 @@ public class Empresa
         return productos;
     }
     
+    //recuperar
+    public void cargarEmpresa(String entrada) throws FileNotFoundException{
+         try {
+            JAXBContext ctx = JAXBContext.newInstance(Empresa.class);
+            Unmarshaller mrs = ctx.createUnmarshaller();
+            Empresa e = (Empresa) mrs.unmarshal(new FileInputStream(entrada));
+
+            System.out.printf("e: %s%n", e);
+            System.out.println();
+        } catch (JAXBException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
+    }
+    
+    //guardar
+    public void guardarEmpresa(String salida){
+         try {
+            JAXBContext ctx = JAXBContext.newInstance(Empresa.class);
+            Marshaller mrs = ctx.createMarshaller();
+            mrs.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+            mrs.marshal(this, new FileOutputStream(salida));
+            //mrs.marshal(this, System.out);
+            
+            //System.out.println();
+        } catch (FileNotFoundException | JAXBException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
+    }
+    
+    /*
+      String nombreArchivo = "../datos6.xml";
+
+        try {
+            JAXBContext ctx = JAXBContext.newInstance(ConjuntoA.class);
+            Marshaller mrs = ctx.createMarshaller();
+            mrs.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+            mrs.marshal(a, new FileOutputStream(nombreArchivo));
+            mrs.marshal(a, System.out);
+
+            System.out.println();
+        } catch (FileNotFoundException | JAXBException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
+
+        try {
+            JAXBContext ctx = JAXBContext.newInstance(ConjuntoA.class);
+            Unmarshaller mrs = ctx.createUnmarshaller();
+            ConjuntoA b = (ConjuntoA) mrs.unmarshal(new FileInputStream(nombreArchivo));
+
+            System.out.printf("b: %s%n", b);
+            System.out.println();
+        } catch (FileNotFoundException | JAXBException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
+    */
+    
+    
+    
+    @XmlElement(name = "productos")
     private final List<Producto> productos;
+    @XmlElement(name = "clientes")
     private final List<Cliente> clientes;
+    @XmlElement(name = "facturas")
     private final List<Factura> facturas;
 
     private final PropertyChangeSupport soporte;

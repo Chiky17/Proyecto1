@@ -1,44 +1,63 @@
 package proyecto1.modelo;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author USER
  */
-public class Cliente {
 
+@XmlType(name = "cliente", propOrder = {"nombre", "id", "correo"})
+public class Cliente implements Serializable{
+
+   
+    
     public Cliente(String nombre, String id, String correo) {
         this.nombre = nombre;
         this.id = id;
         this.correo = correo;
     }
+    
+    private Cliente(){    
+    }
+ 
+    //Set's
+    @XmlElement(name = "nombre")
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    /**
-     * @return the nombre
-     */
+    @XmlElement(name = "nombre")
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @XmlElement(name = "nombre")
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    
+    //Get's
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @return the id
-     */
     public String getId() {
         return id;
     }
 
-    /**
-     * @return the correo
-     */
     public String getCorreo() {
         return correo;
     }
     
     @Override
     public String toString(){
-        return String.format("-> %s , %s , %s ", nombre, id, correo);
+        return String.format("-> %s , %s , %s ", getNombre(), getId(), getCorreo());
     }
 
-    private final String nombre;
-    private final String id;
-    private final String correo;
+    private String nombre;
+    private String id;
+    private String correo;
 }

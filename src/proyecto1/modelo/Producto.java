@@ -1,11 +1,18 @@
 package proyecto1.modelo;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author USER
  */
-public class Producto
+@XmlType(name = "cliente", propOrder = {"descripcion", "precio", "unidades", "codigo","disponible"})
+public class Producto implements Serializable
 {
+
+    
     public Producto(String descripcion, double precio, int unidades, String codigo, boolean disponible)
     {
         this.descripcion = descripcion;
@@ -20,6 +27,10 @@ public class Producto
         this(descripcion, precio, unidades, codigo,true);
     }
     
+    private Producto(){  
+    }
+    
+    //Gets's
     public String getCodigo()
     {
         return codigo;
@@ -40,10 +51,33 @@ public class Producto
         return unidades;
     }
     
+    //Set's
+    @XmlElement(name = "unidades")
     public void setUnidades(int unidades)
     {
         this.unidades = unidades;
     }
+    
+    @XmlElement(name = "descripcion")
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    @XmlElement(name = "precio")
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    @XmlElement(name = "codigo")
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    @XmlElement(name = "disponible")
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+    
     
     private String descripcion;
     private double precio;

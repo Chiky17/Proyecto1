@@ -6,6 +6,7 @@
 package proyecto1.control;
 
 import java.beans.PropertyChangeListener;
+import java.io.FileNotFoundException;
 import java.util.List;
 import proyecto1.modelo.Cliente;
 import proyecto1.modelo.Empresa;
@@ -73,5 +74,15 @@ public class ControlAplicacion
         return modelo.buscaProducto(codigo);
     }
 
+    //XML
+    public void guardarModelo(String salida){
+        modelo.guardarEmpresa(salida);
+    }
+    
+    public void recuperarModelo(String entrada) throws FileNotFoundException{
+        modelo.cargarEmpresa(entrada);
+    }
+    
+    
     private final Empresa modelo;
 }
