@@ -1,6 +1,8 @@
 package proyecto1.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -8,33 +10,32 @@ import java.util.List;
  */
 public class Factura
 {
-    public Factura(List<Producto> productos, Cliente cliente)
+    public Factura(List<LineaDetalle> lineas, Cliente cliente)
     {
-        this.productos = productos;
+        this.lineas = lineas;
         this.cliente = cliente;
+        this.codigo = new Random().nextInt((200 - 1) + 1);
     }
-    
-    
-    
-    // en duda
-    public void agregarProducto(Producto p)
+
+    public double total()
     {
-        throw new UnsupportedOperationException();
+        double suma = 0.0;
+
+        for (LineaDetalle ln : lineas)
+        {
+            suma += ln.getProducto().getPrecio() * ln.getCantidad();
+        }
+
+        return suma;
+    }
+
+     @Override
+    public String toString()
+    {
+        return String.format("%d%n", codigo);
     }
     
-//    public double total()
-//    {
-//        double suma = 0.0;
-//        
-//        for(Producto p : productos)
-//        {
-//            suma += p.obtenerPrecio();
-//        }
-//        
-//        return suma;
-//    }
-    
-    private List<Producto> productos;
-    private Cliente cliente;
-    
+    private final List<LineaDetalle> lineas;
+    private final Cliente cliente;
+    private final int codigo;
 }

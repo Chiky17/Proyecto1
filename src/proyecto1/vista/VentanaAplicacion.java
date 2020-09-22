@@ -14,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import proyecto1.control.ControlAplicacion;
 import proyecto1.modelo.Cliente;
+import proyecto1.modelo.Factura;
+import proyecto1.modelo.LineaDetalle;
 import proyecto1.modelo.Producto;
 
 /**
@@ -412,7 +414,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                btnSeleProdActionPerformed(evt);
+                agregarProducto(evt);
             }
         });
 
@@ -596,53 +598,39 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
     private void crearFactura(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearFactura
 
         Cliente c = encuentraCliente();
+        List lineasDetalle = new ArrayList<LineaDetalle>();
 
         if (c != null)
         {
-            List productos = new ArrayList<Producto>();
-
             TableModel modeloProductosFactura = tablaFactProd.getModel();
-
             int filsProductosF = modeloProductosFactura.getRowCount();
 
-            TableModel modeloProductos = tablaProductos.getModel();
-            int filsProductos = modeloProductos.getRowCount();
+            Producto p;
+            String codigo;
+            int cant;
 
-            if (filsProductosF > 0)
+            LineaDetalle ln;
+            for (int i = 0; i < filsProductosF; i++)
             {
-                String codigoAux;
-                String codigo, descripcion;
-                double precio;
-                int unidades;
-
-                for (int i = 0; i < filsProductosF; i++)
+                codigo = (String) tablaFactProd.getValueAt(i, 0);
+                p = gestor.buscaProducto(codigo);
+                if (p != null)
                 {
-                    codigoAux = (String) modeloProductosFactura.getValueAt(i, 0);
-                    unidades = Integer.parseInt((String) modeloProductos.getValueAt(i, 3));
-
-                    for (int j = 0; j < filsProductos; j++)
-                    {
-                        codigo = (String) modeloProductos.getValueAt(j, 0);
-                        if (codigo.equals(codigoAux));
-                        {
-                            descripcion = (String) modeloProductos.getValueAt(i, 1);
-                            precio = Double.parseDouble((String) modeloProductos.getValueAt(i, 2));
-                            Producto p = new Producto(descripcion, precio, unidades, codigo);
-
-                            productos.add(p);
-                        }
-                    }
+                    cant = Integer.parseInt((String) tablaFactProd.getValueAt(i, 2));
+                    ln = new LineaDetalle(p, cant);
+                    lineasDetalle.add(ln);
                 }
-                gestor.crearFactura(productos, c);
-                mostarMensaje("Factura creada");
-            } else
-            {
-                mostrarError("No se agregó ningun producto");
             }
+
+            gestor.crearFactura(lineasDetalle, c);
+            mostarMensaje("Factura creada");
+            System.out.println(new Factura(lineasDetalle, c));
         } else
         {
-            mostrarError("Cliente no registrado");
+            mostrarError("Cliente no encontrado (crear cliente)");
         }
+
+
     }//GEN-LAST:event_crearFactura
 
     private void textFactProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFactProdActionPerformed
@@ -668,49 +656,37 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
 
     }//GEN-LAST:event_btnSeleClienActionPerformed
 
-    private Producto comprobarProducto()
-    {
+    private void agregarProducto(java.awt.event.ActionEvent evt)//GEN-FIRST:event_agregarProducto
+    {//GEN-HEADEREND:event_agregarProducto
         Producto p = encuentraProducto();
-        int cantP = (int) textFactCanPro.getValue();
-        if (p != null)
-        {
-            //if()
-            while (p.getUnidades() - cantP < 0)
-            {
-                cantP--;
-            }
+        int cantP = (int) textFactCanPro.getValue(); //cantidad producto
 
-            if (cantP > 0)
+        if (cantP > 0)
+        {
+            if (p.getUnidades() - cantP >= 0)
             {
-                etqFactProd.setForeground(Color.blue);
-                etqFactProd.setText("Producto encontrado - " + p.getDescripcion());
-                while (p.getUnidades() - cantP < 0)
+                if (p != null)
                 {
-                    cantP--;
+                    p.setUnidades(p.getUnidades() - cantP);
+                    mostarProductoFactura(p, cantP);
+                    actualizaTablaProductos();
+
+                } else
+                {
+                    etqFactProd.setForeground(Color.red);
+                    etqFactProd.setText("Producto no encontrado (crear producto)");
                 }
-                p.setUnidades(p.getUnidades() - cantP);
-                mostarProductoFactura(p, cantP);    
-                return p;
             } else
             {
                 etqFactProd.setForeground(Color.red);
                 etqFactProd.setText("No hay unidades suficientes del producto");
-                return p;
             }
-
         } else
         {
             etqFactProd.setForeground(Color.red);
-            etqFactProd.setText("Producto no encontrado (crear producto)");
-            return p;
+            etqFactProd.setText("La cantidad del producto debe ser mayor a 0");
         }
-    }
-
-    private void btnSeleProdActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSeleProdActionPerformed
-    {//GEN-HEADEREND:event_btnSeleProdActionPerformed
-
-        comprobarProducto();
-    }//GEN-LAST:event_btnSeleProdActionPerformed
+    }//GEN-LAST:event_agregarProducto
 
     public void editarCampos(boolean estado)
     {
@@ -785,26 +761,6 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
                     p.getCodigo(), p.getDescripcion(), Double.toString(p.getPrecio()), Integer.toString(p.getUnidades())
                 };
         tabla.addRow(fila);
-    }
-
-    public void actualizarProducto(Producto p)
-    {
-        TableModel modeloProductos = tablaProductos.getModel();
-        int filsProductos = modeloProductos.getRowCount();
-
-        String codigo = p.getCodigo();
-        String codigoAux;
-
-        for (int i = 0; i < filsProductos; i++)
-        {
-            codigoAux = (String) modeloProductos.getValueAt(i, 0);
-
-            if (codigo.equals(codigoAux));
-            {
-                modeloProductos.setValueAt(p.getUnidades(), i, 3);
-            }
-
-        }
     }
 
     public void actualizaTablaProductos()

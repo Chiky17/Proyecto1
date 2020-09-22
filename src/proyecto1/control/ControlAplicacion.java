@@ -10,6 +10,7 @@ import java.util.List;
 import proyecto1.modelo.Cliente;
 import proyecto1.modelo.Empresa;
 import proyecto1.modelo.Factura;
+import proyecto1.modelo.LineaDetalle;
 import proyecto1.modelo.Producto;
 
 /**
@@ -36,7 +37,7 @@ public class ControlAplicacion
         modelo.agregarProducto(p);
     }
 
-    public void crearFactura(List<Producto> productos, Cliente c)
+    public void crearFactura(List<LineaDetalle> productos, Cliente c)
     {
         Factura f = new Factura(productos, c);
         modelo.agregarFactura(f);

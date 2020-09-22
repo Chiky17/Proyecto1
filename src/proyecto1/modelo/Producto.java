@@ -44,6 +44,7 @@ public class Producto
     {
         this.unidades = unidades;
     }
+    
     private String descripcion;
     private double precio;
     private int unidades;

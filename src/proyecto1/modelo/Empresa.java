@@ -93,11 +93,6 @@ public class Empresa
     public List<Producto> getProductos(){
         return productos;
     }
-
-    public List<Producto> getProductos()
-    {
-        return productos;
-    }
     
     private final List<Producto> productos;
     private final List<Cliente> clientes;
