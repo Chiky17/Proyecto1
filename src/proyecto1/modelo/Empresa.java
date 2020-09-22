@@ -89,6 +89,10 @@ public class Empresa
         }
         return null;
     }
+    
+    public List<Producto> getProductos(){
+        return productos;
+    }
 
     public List<Producto> getProductos()
     {
