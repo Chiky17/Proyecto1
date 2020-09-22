@@ -205,7 +205,9 @@ public class VentanaCliente extends javax.swing.JFrame implements PropertyChange
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+//hola
+    
+    
     public void init() {
         mostrarMensaje("Ingrese los Datos...");
         setVisible(true);

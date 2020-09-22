@@ -188,6 +188,7 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
         }
     }//GEN-LAST:event_crearProducto
 
+    //esto nuevo
     private void cerrar(java.awt.event.WindowEvent evt)//GEN-FIRST:event_cerrar
     {//GEN-HEADEREND:event_cerrar
         // gestor.relevar(this);
