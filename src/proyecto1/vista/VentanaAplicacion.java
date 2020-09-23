@@ -97,9 +97,6 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         etqFactNum = new javax.swing.JLabel();
         etqCliente2 = new javax.swing.JLabel();
         etqCedula2 = new javax.swing.JLabel();
-        barraMenu = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
 
         setLocationByPlatform(true);
         addWindowListener(new java.awt.event.WindowAdapter()
@@ -356,7 +353,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelProductoLayout.setVerticalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProductoLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAñadirProducto)
                 .addContainerGap())
@@ -410,7 +407,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         panelClienteLayout.setVerticalGroup(
             panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelClienteLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCliente)
                 .addGap(12, 12, 12))
@@ -539,7 +536,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
                 .addGroup(panelFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textFactProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(panelFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textFactCanPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
@@ -670,21 +667,13 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etqId1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         panelPrincipal.addTab("Lista de facturas", panelListaFacturas);
 
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
-
-        jMenu3.setText("File");
-        barraMenu.add(jMenu3);
-
-        jMenu4.setText("Edit");
-        barraMenu.add(jMenu4);
-
-        setJMenuBar(barraMenu);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1152,7 +1141,6 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton btnAñadirProducto;
     private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnCrearFactura;
@@ -1195,8 +1183,6 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
