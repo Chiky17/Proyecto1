@@ -31,12 +31,15 @@ public class Empresa implements Serializable
         facturas = new ArrayList<>();
 
         soporte = new PropertyChangeSupport(this);
+
     }
 
 
     public void añadirObs(PropertyChangeListener pcl)
     {
         soporte.addPropertyChangeListener(pcl);
+
+        soporte.firePropertyChange("Actualizar", null, null);
     }
 
     public void eliminarObs(PropertyChangeListener pcl)
@@ -60,18 +63,6 @@ public class Empresa implements Serializable
     {
         soporte.firePropertyChange("facturas", null, f);
         getFacturas().add(f);
-    }
-
-    public String getNombre()
-    {
-        return nombre;
-    }
-
-    @XmlElement(name = "nombre")
-    public void setNombre(String nombre)
-    {
-        soporte.firePropertyChange("nombre", this.nombre, nombre);
-        this.nombre = nombre;
     }
 
     public Cliente buscaCliente(String id)
@@ -128,20 +119,23 @@ public class Empresa implements Serializable
     }
 
     //recuperar
-    public void cargarEmpresa(String entrada) throws FileNotFoundException
+    public static Empresa cargarEmpresa(String entrada) throws FileNotFoundException
     {
+        Empresa e;
         try
         {
             JAXBContext ctx = JAXBContext.newInstance(Empresa.class);
             Unmarshaller mrs = ctx.createUnmarshaller();
-            Empresa e = (Empresa) mrs.unmarshal(new FileInputStream(entrada));
+            e = (Empresa) mrs.unmarshal(new FileInputStream(entrada));
 
-            System.out.printf("e: %s%n", e);
-            System.out.println();
         } catch (JAXBException ex)
         {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
+            e = new Empresa();
         }
+
+        return e;
+
     }
 
     //guardar
@@ -172,47 +166,122 @@ public class Empresa implements Serializable
     {
         return facturas;
     }
-    /*
-      String nombreArchivo = "../datos6.xml";
 
-        try {
-            JAXBContext ctx = JAXBContext.newInstance(ConjuntoA.class);
-            Marshaller mrs = ctx.createMarshaller();
-            mrs.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+    public String getNombreComercial()
+    {
+        return nombreComercial;
+    }
 
-            mrs.marshal(a, new FileOutputStream(nombreArchivo));
-            mrs.marshal(a, System.out);
+    public int getTipoId()
+    {
+        return tipoId;
+    }
 
-            System.out.println();
-        } catch (FileNotFoundException | JAXBException ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
-        }
+    public int getNumeroId()
+    {
+        return numeroId;
+    }
 
-        try {
-            JAXBContext ctx = JAXBContext.newInstance(ConjuntoA.class);
-            Unmarshaller mrs = ctx.createUnmarshaller();
-            ConjuntoA b = (ConjuntoA) mrs.unmarshal(new FileInputStream(nombreArchivo));
+    public String getUbicacion()
+    {
+        return ubicacion;
+    }
 
-            System.out.printf("b: %s%n", b);
-            System.out.println();
-        } catch (FileNotFoundException | JAXBException ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
-        }
-     */
+    public int getTelefono()
+    {
+        return telefono;
+    }
 
-   
-   
+    public String getFax()
+    {
+        return fax;
+    }
+
+    public String getCorreo()
+    {
+        return correo;
+    }
+
+    public String getNombre()
+    {
+        return nombre;
+    }
+
+    @XmlElement(name = "nombre")
+    public void setNombre(String nombre)
+    {
+        soporte.firePropertyChange("nombre", this.nombre, nombre);
+        this.nombre = nombre;
+    }
+
+    @XmlElement(name = "nombre_comercial")
+    public void setNombreComercial(String nombreComercial)
+    {
+        soporte.firePropertyChange("nombreComercial", this.nombreComercial, nombreComercial);
+        this.nombreComercial = nombreComercial;
+    }
+
+    @XmlElement(name = "tipo_id")
+    public void setTipoId(int tipoId)
+    {
+        soporte.firePropertyChange("tipoId", this.tipoId, tipoId);
+        this.tipoId = tipoId;
+    }
+
+    @XmlElement(name = "número_id")
+    public void setNumeroId(int numeroId)
+    {
+        soporte.firePropertyChange("numeroId", this.numeroId, numeroId);
+        this.numeroId = numeroId;
+    }
+
+    @XmlElement(name = "ubicación")
+    public void setUbicacion(String ubicacion)
+    {
+        soporte.firePropertyChange("ubicacion", this.ubicacion, ubicacion);
+        this.ubicacion = ubicacion;
+    }
+
+    @XmlElement(name = "teléfono")
+    public void setTelefono(int telefono)
+    {
+        soporte.firePropertyChange("telefono", this.telefono, telefono);
+        this.telefono = telefono;
+    }
+
+    @XmlElement(name = "fax")
+    public void setFax(String fax)
+    {
+        soporte.firePropertyChange("fax", this.fax, fax);
+        this.fax = fax;
+    }
+
+    @XmlElement(name = "correo_electronico")
+    public void setCorreo(String correo)
+    {
+        soporte.firePropertyChange("correo", this.correo, correo);
+        this.correo = correo;
+    }
+
+
     @XmlElement(name = "productos")
     private List<Producto> productos;
-    
+
     @XmlElement(name = "clientes")
     private List<Cliente> clientes;
-    
-   @XmlElement(name = "facturas")
+
+    @XmlElement(name = "facturas")
     private List<Factura> facturas;
 
     @XmlTransient
     private final PropertyChangeSupport soporte;
 
     private String nombre;
+    private String nombreComercial;
+    private int tipoId;
+    private int numeroId;
+    private String ubicacion;
+    private int telefono;
+    private String fax;
+    private String correo;
 }

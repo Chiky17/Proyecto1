@@ -6,7 +6,6 @@
 package proyecto1.control;
 
 import java.beans.PropertyChangeListener;
-import java.io.FileNotFoundException;
 import java.util.List;
 import proyecto1.modelo.Cliente;
 import proyecto1.modelo.Empresa;
@@ -20,12 +19,17 @@ import proyecto1.modelo.Producto;
  */
 public class ControlAplicacion
 {
+    public ControlAplicacion(Empresa modelo)
+    {
+        this.modelo = modelo;
+    }
+
+
     public ControlAplicacion()
     {
         modelo = new Empresa();
     }
 
-    // que se cree y lo envie a empresa?
     public void crearCliente(String nombre, String id, String correo)
     {
         Cliente c = new Cliente(nombre, id, correo);
@@ -52,6 +56,47 @@ public class ControlAplicacion
     public void setNombreEmpresa(String nombre)
     {
         modelo.setNombre(nombre);
+    }
+
+
+    public void setNombreComercial(String nombreComercial)
+    {
+        modelo.setNombreComercial(nombreComercial);
+    }
+
+
+    public void setTipoId(int tipoId)
+    {
+        modelo.setTipoId(tipoId);
+    }
+
+
+    public void setNumeroId(int numeroId)
+    {
+        modelo.setNumeroId(numeroId);
+    }
+
+
+    public void setUbicacion(String ubicacion)
+    {
+        modelo.setUbicacion(ubicacion);
+    }
+
+
+    public void setTelefono(int telefono)
+    {
+        modelo.setTelefono(telefono);
+    }
+
+
+    public void setFax(String fax)
+    {
+        modelo.setFax(fax);
+    }
+
+    public void setCorreo(String correo)
+    {
+        modelo.setCorreo(correo);
     }
 
     public void eliminarObs(PropertyChangeListener obs)
@@ -85,11 +130,60 @@ public class ControlAplicacion
         modelo.guardarEmpresa(salida);
     }
 
-    public void recuperarModelo(String entrada) throws FileNotFoundException
+    public List<Cliente> getClientes()
     {
-        modelo.cargarEmpresa(entrada);
+        return modelo.getClientes();
     }
 
+    public List<Producto> getProductos()
+    {
+        return modelo.getProductos();
+    }
+
+    public List<Factura> getFacturas()
+    {
+        return modelo.getFacturas();
+    }
+
+    public String getNombreComercial()
+    {
+        return modelo.getNombreComercial();
+    }
+
+    public int getTipoId()
+    {
+        return modelo.getTipoId();
+    }
+
+    public int getNumeroId()
+    {
+        return modelo.getNumeroId();
+    }
+
+    public String getUbicacion()
+    {
+        return modelo.getUbicacion();
+    }
+
+    public int getTelefono()
+    {
+        return modelo.getTelefono();
+    }
+
+    public String getFax()
+    {
+        return modelo.getFax();
+    }
+
+    public String getCorreo()
+    {
+        return modelo.getCorreo();
+    }
+
+    public String getNombre()
+    {
+        return modelo.getNombre();
+    }
 
     private final Empresa modelo;
 }

@@ -14,8 +14,6 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Producto implements Serializable
 {
-
-
     public Producto(String descripcion, double precio, int unidades, String codigo)
     {
         this.descripcion = descripcion;

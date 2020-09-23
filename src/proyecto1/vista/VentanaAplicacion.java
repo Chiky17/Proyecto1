@@ -25,7 +25,6 @@ import proyecto1.modelo.Producto;
  */
 public class VentanaAplicacion extends javax.swing.JFrame implements PropertyChangeListener
 {
-
     public VentanaAplicacion(ControlAplicacion gestor)
     {
         this.gestor = gestor;
@@ -636,9 +635,9 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comboFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(etqCodFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(etqFactNum, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(etqFactNum, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(etqCodFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(etqCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(etqCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -698,27 +697,43 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
     private boolean modificarEmpresa()//agregar para cada atributo
     {
         String nombre = campoNombre.getText();
+        String nombreComercial = campoNomComercial.getText();
+        String ubicacion = campoUbicacion.getText();
+        String fax = campoFax.getText();
+        String correo = campoCorreo.getText();
 
-        if (compruebaStringEmpresa(nombre, "nombre"))
+        try
         {
-            gestor.setNombreEmpresa(nombre);
-            return true;
-        }
+            int numId = Integer.parseInt(campoNumId.getText());
+            int tipoId = Integer.parseInt(campoTipoId.getText());
+            int telefono = Integer.parseInt(campoTelefono.getText());
 
-        return false;
-    }
+            if (!nombre.isEmpty() && !nombreComercial.isEmpty() && !ubicacion.isEmpty() && !fax.isEmpty() && !correo.isEmpty())
+            {
+                gestor.setNombreEmpresa(nombre);
+                gestor.setNombreComercial(nombreComercial);
+                gestor.setUbicacion(ubicacion);
+                gestor.setFax(fax);
+                gestor.setCorreo(correo);
+                gestor.setNumeroId(numId);
+                gestor.setTelefono(telefono);
+                gestor.setTipoId(tipoId);
+                return true;
+            } else
+            {
+                mostrarError("Los campos no deben de quedar vacios");
+                return false;
+            }
 
-    private boolean compruebaStringEmpresa(String atributo, String campo)
-    {
-        if (atributo.isEmpty())
+        } catch (NumberFormatException e)
         {
-            mostrarError(String.format("El campo %s no debe de estar vacio", campo));
+            mostrarError("El numero ID,tipo ID y teléfono deben de ser un número");
             return false;
-        } else
-        {
-            return true;
         }
+
     }
+
+
 
     private void añadirProducto(java.awt.event.ActionEvent evt)//GEN-FIRST:event_añadirProducto
     {//GEN-HEADEREND:event_añadirProducto
@@ -895,6 +910,41 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
             campoNombre.setText((String) evt.getNewValue());
         }
 
+        if ("nombreComercial".equals(cambio))
+        {
+            campoNomComercial.setText((String) evt.getNewValue());
+        }
+
+        if ("tipoId".equals(cambio))
+        {
+            campoTipoId.setText(Integer.toString((int) evt.getNewValue()));
+        }
+
+        if ("numeroId".equals(cambio))
+        {
+            campoNumId.setText(Integer.toString((int) evt.getNewValue()));
+        }
+
+        if ("ubicacion".equals(cambio))
+        {
+            campoUbicacion.setText((String) evt.getNewValue());
+        }
+
+        if ("telefono".equals(cambio))
+        {
+            campoTelefono.setText(Integer.toString((int) evt.getNewValue()));
+        }
+
+        if ("fax".equals(cambio))
+        {
+            campoFax.setText((String) evt.getNewValue());
+        }
+
+        if ("correo".equals(cambio))
+        {
+            campoCorreo.setText((String) evt.getNewValue());
+        }
+
         if ("productos".equals(cambio))
         {
             mostrarProducto((Producto) evt.getNewValue());
@@ -909,6 +959,12 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         {
             Factura f = (Factura) evt.getNewValue();
             modeloCombo.addElement(f);
+        }
+
+        if ("Actualizar".equals(cambio))
+        {
+            actualizarEmpresa();
+
         }
     }
 
@@ -925,7 +981,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
 
     public void actualizaTablaProductos()
     {
-        List<Producto> list = gestor.getModelo().getProductos();
+        List<Producto> list = gestor.getProductos();
         if (list != null)
         {
             eliminarTablaProductos();
@@ -939,9 +995,65 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         }
     }
 
+    public void actualizaTablaClientes()
+    {
+        List<Cliente> list = gestor.getClientes();
+
+        if (list != null)
+        {
+            eliminarTablaCliente();
+            if (!list.isEmpty())
+            {
+                for (Cliente c : list)
+                {
+                    mostrarCliente(c);
+                }
+            }
+        }
+    }
+
+    public void actualizaFacturas()
+    {
+        List<Factura> facturas = gestor.getFacturas();
+
+        if (facturas != null)
+        {
+            for (Factura f : facturas)
+            {
+                modeloCombo.addElement(f);
+            }
+        }
+    }
+
+    public void actualizarEmpresa()
+    {
+        campoNombre.setText(gestor.getNombre());
+        campoNomComercial.setText(gestor.getNombreComercial());
+        campoCorreo.setText(gestor.getCorreo());
+        campoFax.setText(gestor.getFax());
+        campoNumId.setText(Integer.toString(gestor.getNumeroId()));
+        campoTipoId.setText(Integer.toString(gestor.getTipoId()));
+        campoUbicacion.setText(gestor.getUbicacion());
+        campoTelefono.setText(Integer.toString(gestor.getTelefono()));
+
+        actualizaTablaClientes();
+        actualizaTablaProductos();
+        actualizaFacturas();
+    }
+
     public void eliminarTablaProductos()
     {
         DefaultTableModel tabla = (DefaultTableModel) tablaProductos.getModel();
+        int fila = tablaProductos.getRowCount();
+        for (int i = fila - 1; i >= 0; i--)
+        {
+            tabla.removeRow(i);
+        }
+    }
+
+    public void eliminarTablaCliente()
+    {
+        DefaultTableModel tabla = (DefaultTableModel) tablaCliente.getModel();
         int fila = tablaProductos.getRowCount();
         for (int i = fila - 1; i >= 0; i--)
         {
