@@ -9,51 +9,63 @@ import javax.xml.bind.annotation.XmlType;
  * @author USER
  */
 
-@XmlType(name = "cliente", propOrder = {"nombre", "id", "correo"})
-public class Cliente implements Serializable{
+@XmlType(name = "cliente", propOrder =
+{
+    "nombre", "id", "correo"
+})
+public class Cliente implements Serializable
+{
 
-   
-    
-    public Cliente(String nombre, String id, String correo) {
+
+    public Cliente(String nombre, String id, String correo)
+    {
         this.nombre = nombre;
         this.id = id;
         this.correo = correo;
     }
-    
-    private Cliente(){    
+
+    private Cliente()
+    {
     }
- 
+
     //Set's
     @XmlElement(name = "nombre")
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre)
+    {
         this.nombre = nombre;
     }
 
-    @XmlElement(name = "nombre")
-    public void setId(String id) {
+    @XmlElement(name = "id")
+    public void setId(String id)
+    {
         this.id = id;
     }
 
-    @XmlElement(name = "nombre")
-    public void setCorreo(String correo) {
+    @XmlElement(name = "correo")
+    public void setCorreo(String correo)
+    {
         this.correo = correo;
     }
-    
+
     //Get's
-    public String getNombre() {
+    public String getNombre()
+    {
         return nombre;
     }
 
-    public String getId() {
+    public String getId()
+    {
         return id;
     }
 
-    public String getCorreo() {
+    public String getCorreo()
+    {
         return correo;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString()
+    {
         return String.format("-> %s , %s , %s ", getNombre(), getId(), getCorreo());
     }
 

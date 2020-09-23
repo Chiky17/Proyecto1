@@ -8,7 +8,11 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @author USER
  */
-@XmlType(name = "linea_detalle", propOrder = {"producto", "cantidad"})
+@XmlType(name = "linea", propOrder =
+{
+    "producto", "cantidad"
+})
+
 public class LineaDetalle implements Serializable
 {
 
@@ -17,7 +21,13 @@ public class LineaDetalle implements Serializable
         this.producto = producto;
         this.cantidad = cantidad;
     }
-    
+
+    private LineaDetalle()
+    {
+        
+    }
+
+
     //Get's
     public Producto getProducto()
     {
@@ -28,18 +38,20 @@ public class LineaDetalle implements Serializable
     {
         return cantidad;
     }
-   
+
     //Set's
-    @XmlElement(name = "productos")
-    public void setProducto(Producto producto) {
+    @XmlElement(name = "producto")
+    public void setProducto(Producto producto)
+    {
         this.producto = producto;
     }
 
-   @XmlElement(name = "cantidad")
-    public void setCantidad(int cantidad) {
+    @XmlElement(name = "cantidad_detalle")
+    public void setCantidad(int cantidad)
+    {
         this.cantidad = cantidad;
     }
-    
+
     private Producto producto;
     private int cantidad;
 }

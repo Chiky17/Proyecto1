@@ -95,12 +95,21 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         etqId1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaMostarFactura = new javax.swing.JTable();
+        etqFactNum = new javax.swing.JLabel();
+        etqCliente2 = new javax.swing.JLabel();
+        etqCedula2 = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
+                cerrarAplicacion(evt);
+            }
+        });
 
         panelEstado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelEstado.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
@@ -576,6 +585,12 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         tablaMostarFactura.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane4.setViewportView(tablaMostarFactura);
 
+        etqFactNum.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+
+        etqCliente2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+
+        etqCedula2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout panelListaFacturasLayout = new javax.swing.GroupLayout(panelListaFacturas);
         panelListaFacturas.setLayout(panelListaFacturasLayout);
         panelListaFacturasLayout.setHorizontalGroup(
@@ -583,24 +598,28 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
             .addGroup(panelListaFacturasLayout.createSequentialGroup()
                 .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelListaFacturasLayout.createSequentialGroup()
-                        .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelListaFacturasLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(etqCodFactura))
-                            .addGroup(panelListaFacturasLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(etqCliente1))
+                        .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelListaFacturasLayout.createSequentialGroup()
                                 .addGap(197, 197, 197)
                                 .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(comboFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(etqFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panelListaFacturasLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(etqId))
-                            .addGroup(panelListaFacturasLayout.createSequentialGroup()
                                 .addGap(230, 230, 230)
-                                .addComponent(etqId1)))
+                                .addComponent(etqId1))
+                            .addGroup(panelListaFacturasLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(etqCodFactura)
+                                    .addComponent(etqCliente1)
+                                    .addComponent(etqId))
+                                .addGap(66, 66, 66)
+                                .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelListaFacturasLayout.createSequentialGroup()
+                                        .addComponent(etqFactNum, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(etqCedula2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(etqCliente2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 263, Short.MAX_VALUE))
                     .addGroup(panelListaFacturasLayout.createSequentialGroup()
                         .addContainerGap()
@@ -611,15 +630,22 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
             panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelListaFacturasLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(etqFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelListaFacturasLayout.createSequentialGroup()
+                        .addComponent(etqFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etqCodFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(etqFactNum, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(etqCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(etqCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(etqCodFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(etqCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(etqId, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelListaFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(etqId, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etqCedula2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etqId1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -651,6 +677,9 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
             btnListo.setEnabled(false);
 
             panelPrincipal.setEnabledAt(1, true);
+            panelPrincipal.setEnabledAt(2, true);
+            panelPrincipal.setEnabledAt(3, true);
+            panelPrincipal.setEnabledAt(4, true);
         }
     }//GEN-LAST:event_aplicaModificaEmpresa
 
@@ -661,6 +690,9 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         btnListo.setEnabled(true);
 
         panelPrincipal.setEnabledAt(1, false);
+        panelPrincipal.setEnabledAt(2, false);
+        panelPrincipal.setEnabledAt(3, false);
+        panelPrincipal.setEnabledAt(4, false);
     }//GEN-LAST:event_permitirModificarEmpresa
 
     private boolean modificarEmpresa()//agregar para cada atributo
@@ -793,9 +825,22 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
     {//GEN-HEADEREND:event_mostarFactura
         eliminarTablaFactura();
         Factura f = (Factura) comboFacturas.getSelectedItem();
+        Cliente c = f.getCliente();
 
         mostrarFacturas(f.getLineas());
+        etqFactNum.setText(String.format("%d", f.getCodigo()));
+
+        etqCliente2.setText(c.getNombre());
+        etqCedula2.setText(c.getId());
     }//GEN-LAST:event_mostarFactura
+
+    private void cerrarAplicacion(java.awt.event.WindowEvent evt)//GEN-FIRST:event_cerrarAplicacion
+    {//GEN-HEADEREND:event_cerrarAplicacion
+        gestor.guardarModelo("../datos.xml");
+        gestor.eliminarObs(this);
+        dispose();
+        System.exit(0);
+    }//GEN-LAST:event_cerrarAplicacion
 
     public void editarCampos(boolean estado)
     {
@@ -910,7 +955,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
 
         tabla.setRowCount(0);
     }
-    
+
     public void eliminarTablaFactura()
     {
         DefaultTableModel tabla = (DefaultTableModel) tablaMostarFactura.getModel();
@@ -990,11 +1035,14 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
     private javax.swing.JTextField campoTipoId;
     private javax.swing.JTextField campoUbicacion;
     private javax.swing.JComboBox<String> comboFacturas;
+    private javax.swing.JLabel etqCedula2;
     private javax.swing.JLabel etqCliente1;
+    private javax.swing.JLabel etqCliente2;
     private javax.swing.JLabel etqCodFactura;
     private javax.swing.JLabel etqCorreoElec;
     private javax.swing.JLabel etqEstado;
     private javax.swing.JLabel etqFactClien;
+    private javax.swing.JLabel etqFactNum;
     private javax.swing.JLabel etqFactProd;
     private javax.swing.JLabel etqFactura;
     private javax.swing.JLabel etqFax;

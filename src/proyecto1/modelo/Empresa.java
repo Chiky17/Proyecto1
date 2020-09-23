@@ -5,7 +5,6 @@ import java.beans.PropertyChangeSupport;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +14,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,6 +33,7 @@ public class Empresa implements Serializable
         soporte = new PropertyChangeSupport(this);
     }
 
+
     public void añadirObs(PropertyChangeListener pcl)
     {
         soporte.addPropertyChangeListener(pcl);
@@ -46,19 +47,19 @@ public class Empresa implements Serializable
     public void agregarCliente(Cliente c)
     {
         soporte.firePropertyChange("clientes", null, c);
-        clientes.add(c);
+        getClientes().add(c);
     }
 
     public void agregarProducto(Producto p)
     {
         soporte.firePropertyChange("productos", null, p);
-        productos.add(p);
+        getProductos().add(p);
     }
 
     public void agregarFactura(Factura f)
     {
         soporte.firePropertyChange("facturas", null, f);
-        facturas.add(f);
+        getFacturas().add(f);
     }
 
     public String getNombre()
@@ -66,6 +67,7 @@ public class Empresa implements Serializable
         return nombre;
     }
 
+    @XmlElement(name = "nombre")
     public void setNombre(String nombre)
     {
         soporte.firePropertyChange("nombre", this.nombre, nombre);
@@ -74,11 +76,11 @@ public class Empresa implements Serializable
 
     public Cliente buscaCliente(String id)
     {
-        if (clientes.isEmpty())
+        if (getClientes().isEmpty())
         {
             return null;
         }
-        for (Cliente c : clientes)
+        for (Cliente c : getClientes())
         {
             if (c.getId().equals(id))
             {
@@ -90,11 +92,11 @@ public class Empresa implements Serializable
 
     public Producto buscaProducto(String codigo)
     {
-        if (productos.isEmpty())
+        if (getProductos().isEmpty())
         {
             return null;
         }
-        for (Producto p : productos)
+        for (Producto p : getProductos())
         {
             if (p.getCodigo().equals(codigo))
             {
@@ -103,14 +105,14 @@ public class Empresa implements Serializable
         }
         return null;
     }
-    
-     public Factura buscaFacura(int codigo)
+
+    public Factura buscaFacura(int codigo)
     {
-        if (facturas.isEmpty())
+        if (getFacturas().isEmpty())
         {
             return null;
         }
-        for (Factura f : facturas)
+        for (Factura f : getFacturas())
         {
             if (f.getCodigo() == codigo)
             {
@@ -119,41 +121,57 @@ public class Empresa implements Serializable
         }
         return null;
     }
-    
-    public List<Producto> getProductos(){
+
+    public List<Producto> getProductos()
+    {
         return productos;
     }
-    
+
     //recuperar
-    public void cargarEmpresa(String entrada) throws FileNotFoundException{
-         try {
+    public void cargarEmpresa(String entrada) throws FileNotFoundException
+    {
+        try
+        {
             JAXBContext ctx = JAXBContext.newInstance(Empresa.class);
             Unmarshaller mrs = ctx.createUnmarshaller();
             Empresa e = (Empresa) mrs.unmarshal(new FileInputStream(entrada));
 
             System.out.printf("e: %s%n", e);
             System.out.println();
-        } catch (JAXBException ex) {
+        } catch (JAXBException ex)
+        {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
     }
-    
+
     //guardar
-    public void guardarEmpresa(String salida){
-         try {
+    public void guardarEmpresa(String salida)
+    {
+        try
+        {
             JAXBContext ctx = JAXBContext.newInstance(Empresa.class);
             Marshaller mrs = ctx.createMarshaller();
             mrs.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             mrs.marshal(this, new FileOutputStream(salida));
             //mrs.marshal(this, System.out);
-            
+
             //System.out.println();
-        } catch (FileNotFoundException | JAXBException ex) {
+        } catch (FileNotFoundException | JAXBException ex)
+        {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
     }
-    
+
+    public List<Cliente> getClientes()
+    {
+        return clientes;
+    }
+
+    public List<Factura> getFacturas()
+    {
+        return facturas;
+    }
     /*
       String nombreArchivo = "../datos6.xml";
 
@@ -180,17 +198,20 @@ public class Empresa implements Serializable
         } catch (FileNotFoundException | JAXBException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
-    */
-    
-    
-    
-    @XmlElement(name = "productos")
-    private final List<Producto> productos;
-    @XmlElement(name = "clientes")
-    private final List<Cliente> clientes;
-    @XmlElement(name = "facturas")
-    private final List<Factura> facturas;
+     */
 
+   
+   
+    @XmlElement(name = "productos")
+    private List<Producto> productos;
+    
+    @XmlElement(name = "clientes")
+    private List<Cliente> clientes;
+    
+   @XmlElement(name = "facturas")
+    private List<Factura> facturas;
+
+    @XmlTransient
     private final PropertyChangeSupport soporte;
 
     private String nombre;
