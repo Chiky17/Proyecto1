@@ -459,7 +459,18 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
             {
                 "Codigo", "Producto / Servicio", "Cantidad "
             }
-        ));
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tablaFactProd);
 
         btnCrearFactura.setText("Crear");
@@ -580,7 +591,18 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
             {
                 "Código", "Descripción", "Cantidad", "Precio", "TOTAL"
             }
-        ));
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
         tablaMostarFactura.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane4.setViewportView(tablaMostarFactura);
 
