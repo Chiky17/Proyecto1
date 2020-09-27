@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto1.vista;
 
 import java.awt.Color;
@@ -21,7 +16,10 @@ import proyecto1.modelo.Producto;
 
 /**
  *
- * @author USER
+ * @author Cristopher Ureña D.
+ * @author Calef Lopez B.
+ * 
+ * @version 1.0
  */
 public class VentanaAplicacion extends javax.swing.JFrame implements PropertyChangeListener
 {
@@ -895,6 +893,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
     public void init()
     {
         gestor.registarObs(this);
+        setResizable(false);
         mostarMensaje("¡Bienvenido!");
         setVisible(true);
     }
@@ -1116,7 +1115,7 @@ public class VentanaAplicacion extends javax.swing.JFrame implements PropertyCha
         double precio;
         double suma = 0;
 
-        if (!lineas.isEmpty())
+        if (!lineas.isEmpty() | lineas != null)
         {
             for (int i = 0; i < lineas.size(); i++)
             {

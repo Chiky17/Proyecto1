@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto1.vista;
 
 import java.awt.Color;
@@ -12,7 +7,10 @@ import proyecto1.control.ControlAplicacion;
 
 /**
  *
- * @author USER
+ * @author Cristopher Ureña D.
+ * @author Calef Lopez B.
+ * 
+ * @version 1.0
  */
 public class VentanaProducto extends javax.swing.JFrame implements PropertyChangeListener
 {
@@ -31,7 +29,8 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
         java.awt.GridBagConstraints gridBagConstraints;
 
         panelEstado = new javax.swing.JPanel();
@@ -56,8 +55,10 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
         setMinimumSize(new java.awt.Dimension(300, 400));
         setPreferredSize(new java.awt.Dimension(450, 350));
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
                 cerrar(evt);
             }
         });
@@ -100,8 +101,10 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
         panelPricipal.add(etqUnidadesProducto, gridBagConstraints);
 
         btnCrearCliente.setText("Listo");
-        btnCrearCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCrearCliente.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 crearProducto(evt);
             }
         });
@@ -188,7 +191,6 @@ public class VentanaProducto extends javax.swing.JFrame implements PropertyChang
         }
     }//GEN-LAST:event_crearProducto
 
-    //esto nuevo
     private void cerrar(java.awt.event.WindowEvent evt)//GEN-FIRST:event_cerrar
     {//GEN-HEADEREND:event_cerrar
         // gestor.relevar(this);

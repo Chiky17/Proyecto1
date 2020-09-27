@@ -1,8 +1,6 @@
 package proyecto1;
 
 import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -13,7 +11,10 @@ import proyecto1.vista.VentanaAplicacion;
 
 /**
  *
- * @author USER
+ * @author Cristopher Ureña D.
+ * @author Calef Lopez B.
+ * 
+ * @version 1.0
  */
 public class Proyecto1
 {

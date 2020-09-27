@@ -8,7 +8,10 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  *
- * @author USER
+ * @author Cristopher Ureña D.
+ * @author Calef Lopez B.
+ * 
+ * @version 1.0
  */
 
 @XmlType(name = "factura", propOrder =
@@ -17,12 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Factura implements Serializable
 {
-    @XmlElement(name = "linea")
-    public void setLineas(List<LineaDetalle> lineas)
-    {
-        this.lineas = lineas;
-    }
-
 
     public Factura(List<LineaDetalle> lineas, Cliente cliente)
     {
@@ -33,20 +30,31 @@ public class Factura implements Serializable
 
     private Factura()
     {
-        this(null,null);
+        this(null, null);
     }
 
-
-    public double total()
+    public double subTotal()
     {
         double suma = 0.0;
 
-        for (LineaDetalle ln : getLineas())
+        if (!lineas.isEmpty())
         {
-            suma += ln.getProducto().getPrecio() * ln.getCantidad();
+            for (LineaDetalle ln : getLineas())
+            {
+                suma += ln.getProducto().getPrecio() * ln.getCantidad();
+            }
         }
-
         return suma;
+    }
+
+    public double totalIva()
+    {
+        return subTotal() * 0.13;
+    }
+
+    public double total()
+    {
+        return subTotal() + totalIva();
     }
 
     @Override
@@ -66,6 +74,12 @@ public class Factura implements Serializable
         this.cliente = cliente;
     }
 
+    @XmlElement(name = "linea")
+    public void setLineas(List<LineaDetalle> lineas)
+    {
+        this.lineas = lineas;
+    }
+
     public int getCodigo()
     {
         return codigo;
@@ -76,11 +90,11 @@ public class Factura implements Serializable
         return lineas;
     }
 
-    //@XmlElement(name = "linea")
     private List<LineaDetalle> lineas;
     private Cliente cliente;
-    
+
     @XmlTransient
     private static int k = 1;
     private final int codigo;
+
 }

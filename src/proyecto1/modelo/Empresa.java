@@ -18,7 +18,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author USER
+ * @author Cristopher Ureña D.
+ * @author Calef Lopez B.
+ * 
+ * @version 1.0
  */
 
 @XmlRootElement(name = "Empresa")
@@ -63,6 +66,9 @@ public class Empresa implements Serializable
     {
         soporte.firePropertyChange("facturas", null, f);
         getFacturas().add(f);
+        
+        Pdf.crearPdfFactura(f, this);
+        // crear facutura?
     }
 
     public Cliente buscaCliente(String id)

@@ -6,7 +6,10 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  *
- * @author USER
+ * @author Cristopher Ureña D.
+ * @author Calef Lopez B.
+ * 
+ * @version 1.0
  */
 
 @XmlType(name = "cliente", propOrder =
